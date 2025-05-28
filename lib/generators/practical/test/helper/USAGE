@@ -1,0 +1,8 @@
+Description:
+    Creates a new test helper for the Practical Framework, under the namespace Practical::Test::Helpers
+
+Example:
+    bin/rails generate practical:test:helper assertions
+
+    This will create:
+        app/lib/practical/test/helpers/assertions.rb

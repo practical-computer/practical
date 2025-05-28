@@ -1,0 +1,3 @@
+#!/bin/bash -e
+
+test/dummy/bin/rails server

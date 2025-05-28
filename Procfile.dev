@@ -1,0 +1,2 @@
+js: npm run build -- --watch --skip-terser
+css: bin/dummy_rails app:dartsass:watch

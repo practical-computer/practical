@@ -1,0 +1,9 @@
+en:
+  practical_framework:
+    forms:
+      generic_error_blurb: "Please fix the following errors:"
+      placeholders:
+        email: "grace@hopper.me"
+        name: "Grace Hopper"
+        passkey_label: "iCloud Keychain"
+      unlock_title: "Unlock"

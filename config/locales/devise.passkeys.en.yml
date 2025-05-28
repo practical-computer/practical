@@ -1,0 +1,18 @@
+en:
+  devise:
+    emergency_passkey_registrations:
+      credential_missing_or_could_not_be_parsed: "We weren't able to register this passkey."
+      webauthn_origin_verification_error: "There was an error setting up this passkey."
+      webauthn_challenge_verification_error: "We weren't able to verify this passkey; please try again."
+    failure:
+      credential_missing_or_could_not_be_parsed: "We weren't able to register this passkey."
+      webauthn_origin_verification_error: "There was an error setting up this passkey."
+      webauthn_challenge_verification_error: "We weren't able to verify this passkey; please try again."
+      stored_credential_not_found: "We weren't able to find this passkey."
+    passkeys:
+      must_be_at_least_one_passkey: "You need at least 1 passkey to be able to login."
+      not_reauthenticated: "You need to verify your identity with an existing passkey first."
+    registrations:
+      email_missing: "Please provide your email address."
+      passkey_label_missing: "Please label your passkey."
+      not_reauthenticated: "You need to verify your identity with an existing passkey first."

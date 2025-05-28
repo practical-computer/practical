@@ -1,0 +1,9 @@
+Description:
+    Wrapper around the `component` generator, to prefix the given name with `practical/views/` and set the parent to
+    `Practical::Views::BaseComponent`
+
+Example:
+    bin/rails practical:views:component icon name
+
+    This will create:
+        app/components/practical/views/icon_component.rb

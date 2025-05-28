@@ -1,0 +1,34 @@
+<% content_for(:head) do %>
+  <%= javascript_include_tag "session-form", type: :module %>
+<% end %>
+
+<section class="wa-stack">
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <%= render Forms::SigninFormComponent.new(
+    model: resource,
+    as: resource_name,
+    url: user_session_url,
+    challenge_url: new_user_session_challenge_url,
+    credential_field_name: field_name(resource.model_name.param_key, :passkey_credential)
+  )
+  %>
+
+  <nav class="wa-cluster" role="list">
+    <section>
+      <%= link_to new_user_emergency_passkey_registration_url do %>
+        <%= icon_text(
+          icon: icon_set.emergency_passkey_registration_icon,
+          text: guided_translate(".emergency_passkey_registrations.prompt")
+        ) %>
+      <% end %>
+    </section>
+    <% if Flipper.enabled?(:self_service_user_registration) %>
+      <section>
+        <%= link_to new_user_registration_url do %>
+          <%= icon_text(icon: icon_set.signup_icon, text: guided_translate(".registration.prompt")) %>
+        <% end %>
+      </section>
+    <% end %>
+  </nav>
+</section>

@@ -1,0 +1,11 @@
+<nav class="wa-stack pagination wa-size-s wa-gap-0">
+  <p><%= page_detail_text %></p>
+
+  <section class="wa-cluster">
+    <%= previous_item %>
+    <% pagy.series.each do |item| %>
+      <%= page_item(item) %>
+    <% end %>
+    <%= next_item %>
+  </section>
+</nav>

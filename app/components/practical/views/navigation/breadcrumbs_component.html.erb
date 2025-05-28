@@ -1,0 +1,31 @@
+<%= tag.wa_breadcrumb(**finalized_options) do %>
+
+  <% if truncate_middle? %>
+    <% truncate_start.each do |crumb| %>
+      <%= build_crumb(crumb: crumb) %>
+    <% end %>
+
+    <wa-breadcrumb-item>
+      <wa-dropdown>
+        <wa-button slot="trigger" size="small" appearance="filled" pill>
+          <wa-icon label="More options" name="ellipsis" variant="solid"></wa-icon>
+        </wa-button>
+        <nav class="wa-stack wa-gap-xs dropdown-navigation">
+          <ul class="navigation-list">
+          <% truncated_items.each do |crumb| %>
+            <li><%= tag.a(crumb.name, href: (crumb.current? ? nil : crumb.url)) %></li>
+          <% end %>
+          </ul>
+        </nav>
+      </wa-dropdown>
+    </wa-breadcrumb-item>
+
+    <% truncate_end.each do |crumb| %>
+      <%= build_crumb(crumb: crumb) %>
+    <% end %>
+  <% else %>
+    <% breadcrumb_trail.each do |crumb| %>
+      <%= build_crumb(crumb: crumb) %>
+    <% end %>
+  <% end %>
+<% end %>

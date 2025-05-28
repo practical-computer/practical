@@ -1,0 +1,38 @@
+en:
+  emergency_passkey_registrations:
+    request_form:
+      title:
+        text: "Can’t log in?"
+
+      description:
+        html: "<p>Not to worry! You can register a new passkey and get back into your account.</p>"
+
+    registration_form:
+      title:
+        text: "Register your new passkey"
+
+      description:
+        html: "<p>Once you register your new passkey, you'll be able to log back into your account.</p>"
+
+    sent_message: "Sending the instructions to your email!"
+    registered_message: "Your passkey has been registered; you can login now!"
+    prompt: "Can’t log in?"
+  registration:
+    prompt: "Create an account"
+  signin:
+    prompt: "Sign in"
+    form:
+      title: "Sign in"
+      submit_button: "Sign in"
+
+  user_settings:
+    registration:
+      form:
+        title: Create an account
+        submit_button_title: "Sign up"
+
+  app_navigation:
+    user_settings:
+      home_title: "Home"
+      profile_title: "My Account"
+      signout_title: "Sign out"

@@ -1,0 +1,30 @@
+<%= form_wrapper do |f| %>
+  <%= f.fieldset do %>
+    <%= f.legend do %>
+      <%= f.fieldset_title(icon: icon_set.signin_icon, title: t("signin.form.title")) %>
+    <% end %>
+
+    <%= f.input_component(:email) do |component|
+      component.with_label { f.field_title(icon: icon_set.email_address_icon, title: "Email") }
+
+      component.with_field {
+        f.email_field(:email, component.field_options(
+          placeholder: t("practical_framework.forms.placeholders.email"),
+          autofocus: true,
+          autocomplete: "username webauthn",
+          required: false,
+          data: {"focusout-validation": true}
+       ))
+      }
+    end %>
+
+    <%= f.fallback_error_section(id: generic_errors_id) %>
+    <%= f.hidden_field :passkey_credential %>
+
+    <section>
+      <%= f.button_component(type: :submit, color_variant: :success) do
+        icon_text(icon: icon_set.passkey_icon, text: t("signin.form.submit_button"))
+      end %>
+    </section>
+  <% end %>
+<% end %>

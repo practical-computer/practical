@@ -1,0 +1,10 @@
+<%= tag.dialog(**finalized_options) do %>
+  <header>
+    <h2><%= header %></h2>
+    <form method="dialog">
+      <button class="wa-plain"><%= render icon_set.dialog_close_icon %></button>
+    </form>
+  </header>
+
+  <%= content %>
+<% end %>

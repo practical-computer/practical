@@ -1,0 +1,6 @@
+en:
+  user_settings:
+    profile:
+      form:
+        title: My contact information
+        submit_button_title: "Verify & Update"

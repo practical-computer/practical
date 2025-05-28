@@ -1,0 +1,31 @@
+<% content_for :head do %>
+  <%= javascript_include_tag "application", type: :module %>
+<% end %>
+
+<main class="wa-stack">
+  <nav>
+    <h2>Navigation</h2>
+    <ul class="wa-stack wa-gap-2xs">
+      <li>
+        <%= link_to root_url do %>
+          <%= icon_text icon: icon_set.home_icon, text: t("app_navigation.user_settings.home_title") %>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to edit_user_registration_url do %>
+          <%= icon_text icon: icon_set.profile_icon, text: t("app_navigation.user_settings.profile_title") %>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to destroy_user_session_url do %>
+          <%= icon_text icon: icon_set.signout_icon, text: t("app_navigation.user_settings.signout_title") %>
+        <% end %>
+      </li>
+    </ul>
+  </nav>
+  <% content_for :main_content do %>
+    <%= yield%>
+  <% end %>
+</main>
+
+<%= render template: "layouts/application" %>

@@ -1,0 +1,55 @@
+<submit-form-after-reauthentication>
+  <%= form_wrapper do |f| %>
+    <%= f.fieldset do %>
+      <%= f.legend do %>
+        <%= f.fieldset_title(icon: icon_set.badge_icon, title: t("user_settings.profile.form.title")) %>
+      <% end %>
+
+      <%= f.input_component(:email) do |component|
+        component.with_label do
+          f.field_title(icon: icon_set.email_address_icon, title: "Email")
+        end
+
+        component.with_field do
+          f.email_field(:email, component.field_options(
+            placeholder: t("practical_framework.forms.placeholders.email"),
+            autofocus: true,
+            autocomplete: "username webauthn",
+            required: true,
+            data: {"focusout-validation": true}
+           ))
+        end
+      end %>
+
+      <%= f.input_component(:name) do |component|
+        component.with_label do
+          f.field_title(icon: icon_set.user_name_icon, title: "Name")
+        end
+
+        component.with_field do
+          f.text_field(:name, component.field_options(
+            placeholder: t("practical_framework.forms.placeholders.name"),
+            autofocus: true,
+            autocomplete: "name",
+            required: true,
+            data: {"focusout-validation": true}
+          ))
+        end
+      end %>
+
+      <%= f.hidden_field :reauthentication_token, id: dom_id(user, :settings_reauthentication_token) %>
+
+      <%= f.fallback_error_section(id: generic_errors_id) %>
+
+      <% if helpers.devise_mapping.confirmable? && user.pending_reconfirmation? %>
+        <em>Currently waiting confirmation for: <%= user.unconfirmed_email %></em>
+      <% end %>
+
+      <section>
+        <%= f.button_component(type: :submit, color_variant: :success) do
+          icon_text(icon: icon_set.passkey_icon, text: t("user_settings.profile.form.submit_button_title"))
+        end %>
+      </section>
+    <% end %>
+  <% end %>
+</submit-form-after-reauthentication>

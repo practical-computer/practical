@@ -1,0 +1,53 @@
+<%= form_wrapper do |f| %>
+  <%= f.fieldset do %>
+    <%= f.legend do %>
+      <%= icon_text(icon: icon_set.signup_icon, text: t("user_settings.registration.form.title")) %>
+    <% end %>
+
+    <%= f.input_component(:email) do |component|
+      component.with_label { f.field_title(icon: icon_set.email_address_icon, title: "Email") }
+
+      component.with_field {
+        f.email_field(:email, component.field_options(
+          placeholder: t("practical_framework.forms.placeholders.email"),
+          autofocus: true,
+          autocomplete: "username webauthn",
+          required: true
+        ))
+      }
+    end %>
+
+    <%= f.input_component(:name) do |component|
+      component.with_label { f.field_title(icon: icon_set.user_name_icon, title: "Name") }
+
+      component.with_field {
+        f.text_field(:name, component.field_options(
+          placeholder: t("practical_framework.forms.placeholders.name"),
+          autofocus: true,
+          autocomplete: "name",
+          required: true
+        ))
+      }
+    end %>
+
+    <%= f.input_component(:passkey_label) do |component|
+      component.with_label { f.field_title(icon: icon_set.passkey_label_icon, title: "Passkey label") }
+
+      component.with_field {
+        f.text_field(:passkey_label, component.field_options(
+          placeholder: t("practical_framework.forms.placeholders.passkey_label"),
+          required: true
+        ))
+      }
+    end %>
+
+    <%= f.hidden_field :passkey_credential %>
+    <%= f.fallback_error_section(id: generic_errors_id) %>
+
+    <section>
+      <%= f.button_component(type: :submit, color_variant: :success) do
+        icon_text(icon: icon_set.passkey_icon, text:  t("user_settings.registration.form.submit_button_title"))
+      end %>
+    </section>
+  <% end %>
+<% end %>

@@ -1,0 +1,19 @@
+{
+  "name": "app",
+  "private": "true",
+  "dependencies": {
+    "@github/webauthn-json": "^2.1.1",
+    "@practical-computer/error-handling": "github:practical-computer/practical-error-handling-js",
+    "@practical-computer/practical-views": "github:practical-computer/practical-views-js",
+    "mrujs": "^1.0.0"
+  },
+  "scripts": {
+    "build": "node build.config.mjs"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^28.0.3",
+    "@rollup/plugin-node-resolve": "^16.0.1",
+    "glob": "^11.0.1",
+    "rollup": "^4.35.0"
+  }
+}

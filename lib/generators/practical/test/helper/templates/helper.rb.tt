@@ -1,0 +1,4 @@
+# frozen_string_literal: true
+
+module Practical::Test::Helpers::<%= class_name %>
+end

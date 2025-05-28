@@ -1,0 +1,12 @@
+@use 'sass:meta';
+@import url('https://early.webawesome.com/webawesome@3.0.0-alpha.11/dist/styles/webawesome.css') layer(framework.wa);
+
+@layer framework.web-awesome, framework.components, application;
+
+@layer framework.web-awesome {
+  @include meta.load-css('web-awesome')
+}
+
+@layer application {
+  @include meta.load-css('application/index')
+}

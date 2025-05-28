@@ -1,0 +1,53 @@
+<wa-page>
+  <% if banner? %>
+    <section slot="banner">
+      <%= banner %>
+    </section>
+  <% end %>
+
+  <% if header? %>
+    <header slot="header">
+      <%= header %>
+    </header>
+  <% end %>
+
+  <% if subheader? %>
+    <section slot="subheader">
+      <%= subheader %>
+    </section>
+  <% end %>
+
+  <% if navigation_header? %>
+    <nav slot="navigation-header">
+      <%= navigation_header %>
+    </nav>
+  <% end %>
+
+  <% if navigation? %>
+    <nav slot="navigation">
+      <%= navigation %>
+    </nav>
+  <% end %>
+
+  <% if navigation_footer? %>
+    <nav slot="navigation-footer">
+      <%= navigation_footer %>
+    </nav>
+  <% end %>
+
+  <% if main_header? %>
+    <aside slot="main-header">
+      <%= main_header %>
+    </aside>
+  <% end %>
+
+  <main class="wa-body-l">
+    <%= content %>
+  </main>
+
+  <% if footer? %>
+    <footer slot="footer">
+      <%= footer %>
+    </footer>
+  <% end %>
+</wa-page>

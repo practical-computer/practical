@@ -1,0 +1,9 @@
+# frozen_string_literal: true
+
+module Practical::Test::Shared::<%= class_name %>
+  extend ActiveSupport::Concern
+
+  included do
+    test "a test shared across apps using the framework"
+  end
+end

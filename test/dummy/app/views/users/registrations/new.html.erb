@@ -1,0 +1,21 @@
+<% content_for(:head) do %>
+  <%= javascript_include_tag "register-passkey-form", type: :module %>
+<% end %>
+
+<section class="wa-stack">
+  <%= render Forms::SignupFormComponent.new(
+    model: resource,
+    as: resource_name,
+    url: registration_path(resource_name),
+    challenge_url: new_user_registration_challenge_url,
+    credential_field_name: field_name(resource.model_name.param_key, :passkey_credential)
+  ) %>
+
+  <nav class="wa-cluster" role="list">
+    <section>
+      <%= link_to new_user_session_url do %>
+        <%= icon_text(icon: icon_set.signin_icon, text: guided_translate(".signin.prompt")) %>
+      <% end %>
+    </section>
+  </nav>
+</section>

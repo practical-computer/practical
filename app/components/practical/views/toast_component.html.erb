@@ -1,0 +1,26 @@
+<toast-dialog>
+  <dialog open class='wa-off toast'>
+    <%= tag.section(**finalized_callout_options) do %>
+    <div class="wa-flank:end wa-gap-xs">
+      <% if icon? %>
+        <section class='wa-flank'>
+          <%= icon %>
+          <p><%= content %></p>
+        </section>
+      <% else %>
+        <p><%= content %></p>
+      <% end %>
+
+      <form method="dialog">
+        <%= render Practical::Views::ButtonComponent.new(type: :submit, appearance: :plain, ) do %>
+          <wa-progress-ring value="100" remaining-time-indicator>
+            <%= render icon_set.dialog_close_icon %>
+          </wa-progress-ring>
+        <% end %>
+      </form>
+    </div>
+    <% end %>
+
+    <auto-expire duration-seconds="8" tick-rate-ms="150"></auto-expire>
+  </dialog>
+</toast-dialog>

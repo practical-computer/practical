@@ -1,0 +1,11 @@
+@layer framework.wa {
+  :root {
+    --wa-fouce-timeout: 0s
+  }
+
+  .wa-off,
+  .wa-off-deep,
+  .wa-off-deep * {
+    all: revert-layer;
+  }
+}

@@ -1,0 +1,9 @@
+<section class="datatable-filters wa-cluster wa-callout wa-neutral wa-outlined wa-align-items-center wa-size-s">
+  <%= open_filters_button %>
+
+  <section class="wa-cluster">
+    <% applied_filters.each do |applied_filter| %>
+      <%= applied_filter %>
+    <% end %>
+  </section>
+</section>

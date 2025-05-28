@@ -1,0 +1,413 @@
+# Omakase Ruby styling for Rails
+inherit_gem:
+  rubocop-rails-omakase: rubocop.yml
+
+# Your own specialized rules go here
+
+require:
+  - rubocop-rails
+  - rubocop-performance
+  - rubocop-minitest
+
+AllCops:
+  TargetRubyVersion: 3.2
+  TargetRailsVersion: 7.1
+  NewCops: enable
+  Exclude:
+    - db/schema.rb
+    - db/migrate/*
+    - vendor/**/*
+
+Bundler/OrderedGems:
+  ConsiderPunctuation: true
+
+Layout/ArgumentAlignment:
+  EnforcedStyle: with_first_argument
+
+Layout/ConditionPosition:
+  Enabled: false
+
+Layout/DotPosition:
+  EnforcedStyle: leading
+
+Layout/EmptyLines:
+  Exclude:
+    - test/**/*
+    - lib/practical_framework/tests/**/*.rb
+    - lib/practical_framework/shared_test_modules/**/*.rb
+    - db/seeds/**/*.rb
+
+Layout/IndentationConsistency:
+  EnforcedStyle: indented_internal_methods
+
+Layout/LineLength:
+  AllowHeredoc: true
+  AllowURI: true
+  Max: 120
+  Exclude:
+    - Gemfile
+    - test/**/*
+    - lib/practical_framework/tests/**/*.rb
+    - lib/practical_framework/shared_test_modules/**/*.rb
+    - lib/generators/**/*.rb
+
+Layout/SpaceBeforeBlockBraces:
+  Enabled: false
+
+Layout/SpaceInsideHashLiteralBraces:
+  Enabled: false
+
+Layout/SpaceInsideArrayLiteralBrackets:
+  Enabled: false
+
+Layout/SpaceInsideBlockBraces:
+  Enabled: false
+
+Layout/TrailingEmptyLines:
+  Enabled: false
+
+Lint/AssignmentInCondition:
+  Enabled: true
+  AllowSafeAssignment: false
+
+Lint/AmbiguousOperator:
+  Enabled: false
+
+Lint/AmbiguousRegexpLiteral:
+  Enabled: false
+
+Lint/DeprecatedClassMethods:
+  Enabled: false
+
+Lint/ElseLayout:
+  Enabled: false
+
+Lint/FlipFlop:
+  Enabled: false
+
+Lint/LiteralInInterpolation:
+  Enabled: false
+
+Lint/Loop:
+  Enabled: false
+
+Lint/MissingSuper:
+  Enabled: false
+
+Lint/ParenthesesAsGroupedExpression:
+  Enabled: false
+
+Lint/RequireParentheses:
+  Enabled: false
+
+Lint/SuppressedException:
+  Enabled: false
+
+Lint/UnderscorePrefixedVariableName:
+  Enabled: false
+
+Lint/UnusedMethodArgument:
+  Enabled: false
+
+Lint/UselessAssignment:
+  Exclude:
+    - test/**/*
+    - lib/practical_framework/tests/**/*.rb
+    - lib/practical_framework/shared_test_modules/**/*.rb
+    - db/seeds/**/*.rb
+
+Metrics/BlockLength:
+  Exclude:
+    - test/**/*.rb
+    - config/**/*.rb
+    - db/migrate/*.rb
+    - db/seeds.rb
+    - db/seeds/**/*.rb
+    - lib/tasks/**/*.rake
+    - lib/practical_framework/tests/**/*.rb
+    - lib/practical_framework/shared_test_modules/**/*.rb
+    - Gemfile
+    - app/components/**/*.rb
+
+Metrics/BlockNesting:
+  Enabled: false
+
+Metrics/AbcSize:
+  Enabled: false
+
+Metrics/ClassLength:
+  Enabled: false
+
+Metrics/CyclomaticComplexity:
+  Enabled: false
+
+Metrics/MethodLength:
+  Enabled: false
+
+Metrics/ModuleLength:
+  Exclude:
+    - test/**/*
+    - lib/practical_framework/tests/**/*.rb
+    - lib/practical_framework/shared_test_modules/**/*.rb
+
+Metrics/ParameterLists:
+  Enabled: false
+
+Naming/AccessorMethodName:
+  Enabled: false
+
+Naming/AsciiIdentifiers:
+  Enabled: false
+
+Naming/FileName:
+  Enabled: false
+
+Naming/MemoizedInstanceVariableName:
+  Enabled: false
+
+Naming/PredicateName:
+  ForbiddenPrefixes:
+    - is_
+
+Naming/VariableNumber:
+  Enabled: false
+
+Style/Alias:
+  Enabled: false
+
+Style/ArrayJoin:
+  Enabled: false
+
+Style/AsciiComments:
+  Enabled: false
+
+Style/Attr:
+  Enabled: false
+
+Style/CaseEquality:
+  Enabled: false
+
+Style/CharacterLiteral:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/ClassVars:
+  Enabled: false
+
+Style/CollectionMethods:
+  PreferredMethods:
+    find: false
+    reduce: inject
+    collect: map
+    find_all: false
+
+Style/ColonMethodCall:
+  Enabled: false
+
+Style/CommentAnnotation:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/DoubleNegation:
+  Enabled: false
+
+Style/EachWithObject:
+  Enabled: false
+
+Style/EmptyLiteral:
+  Enabled: false
+
+Style/Encoding:
+  Enabled: false
+
+Style/EvenOdd:
+  Enabled: false
+
+Style/FormatString:
+  Enabled: false
+
+Style/FormatStringToken:
+  EnforcedStyle: template
+
+Style/GlobalVars:
+  Enabled: false
+
+Style/GuardClause:
+  Enabled: false
+
+Style/HashSyntax:
+  EnforcedShorthandSyntax: never
+
+Style/IfUnlessModifier:
+  Enabled: false
+
+Style/IfWithSemicolon:
+  Enabled: false
+
+Style/InlineComment:
+  Enabled: false
+
+Style/Lambda:
+  Enabled: false
+
+Style/LambdaCall:
+  Enabled: false
+
+Style/LineEndConcatenation:
+  Enabled: false
+
+Style/ModuleFunction:
+  Enabled: false
+
+Style/NegatedIf:
+  Enabled: false
+
+Style/NegatedWhile:
+  Enabled: false
+
+Style/Next:
+  Enabled: false
+
+Style/NilComparison:
+  Enabled: false
+
+Style/NumberedParameters:
+  Enabled: true
+  EnforcedStyle: allow_single_line
+
+Style/NumberedParametersLimit:
+  Enabled: true
+  Max: 1
+
+Style/NumericLiterals:
+  Enabled: false
+
+Style/NumericPredicate:
+  EnforcedStyle: comparison
+
+Style/OneLineConditional:
+  Enabled: false
+
+Style/ParallelAssignment:
+  Enabled: false
+
+Style/PercentLiteralDelimiters:
+  PreferredDelimiters:
+    "%": "()"
+    "%i": "()"
+    "%q": "()"
+    "%Q": "()"
+    "%r": "{}"
+    "%s": "()"
+    "%w": "()"
+    "%W": "()"
+    "%x": "()"
+
+Style/PerlBackrefs:
+  Enabled: false
+
+Style/Proc:
+  Enabled: false
+
+Style/RaiseArgs:
+  Enabled: false
+
+Style/RegexpLiteral:
+  Enabled: false
+
+Style/SelfAssignment:
+  Enabled: false
+
+Style/SignalException:
+  Enabled: false
+
+Style/SingleLineBlockParams:
+  Enabled: false
+
+Style/SingleLineMethods:
+  Enabled: false
+
+Style/SpecialGlobalVars:
+  Enabled: false
+
+Style/StringLiterals:
+  Enabled: false
+
+Style/TrailingCommaInArguments:
+  Enabled: false
+
+Style/TrailingCommaInArrayLiteral:
+  Enabled: false
+
+Style/TrailingCommaInHashLiteral:
+  Enabled: false
+
+Style/RedundantReturn:
+  Enabled: false
+
+Style/TrivialAccessors:
+  Enabled: false
+
+Style/VariableInterpolation:
+  Enabled: false
+
+Style/WhenThen:
+  Enabled: false
+
+Style/WhileUntilModifier:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  EnforcedStyle: always
+  Enabled: true
+
+Lint/SymbolConversion:
+  EnforcedStyle: consistent
+  Enabled: true
+
+Style/WordArray:
+  Enabled: false
+
+Rails/ActionFilter:
+  Enabled: false
+
+Rails/Delegate:
+  Enabled: false
+
+Rails/DynamicFindBy:
+  Enabled: false
+
+Rails/Output:
+  Include:
+    - app/**/*.rb
+    - config/**/*.rb
+    - db/**/*.rb
+    - lib/**/*.rb
+    - test/**/*.rb
+
+Rails/RequestReferer:
+  EnforcedStyle: referrer
+
+Rails/SkipsModelValidations:
+  Enabled: false
+
+Rails/I18nLocaleTexts:
+  Enabled: false
+
+Performance/RedundantMerge:
+  Enabled: false
+
+Performance/TimesMap:
+  Enabled: false
+
+Rails/FilePath:
+  Enabled: false
+
+# Temporary disable this until Ruby 3.3.1 is released
+
+Naming/BlockForwarding:
+  Enabled: false
