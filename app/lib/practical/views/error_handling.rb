@@ -6,8 +6,9 @@ module Practical::Views::ErrorHandling
 
       {
         container_id: error_container_id,
-        element_id: element_id,
-        message: error.message
+        element_to_invalidate_id: element_id,
+        message: error.message,
+        type: error.type
       }
     end
   end
