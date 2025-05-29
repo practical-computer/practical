@@ -420,6 +420,7 @@ DEPENDENCIES
   faker
   flipper
   flipper-active_record
+  honeybadger
   jsbundling-rails
   localhost
   practical!

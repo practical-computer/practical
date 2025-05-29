@@ -24,6 +24,8 @@ gem "view_component"
 gem "flipper"
 gem "flipper-active_record"
 
+gem "honeybadger"
+
 group :test do
   gem "simplecov"
   gem 'spy'
