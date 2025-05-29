@@ -24,8 +24,5 @@ class SendEmergencyPasskeyRegistrationService
     EmergencyPasskeyRegistrationMailer.emergency_registration_request(
       emergency_passkey_registration: emergency_registration
     ).deliver_later
-  rescue ArgumentError => e
-    puts e.backtrace
-    raise e
   end
 end
