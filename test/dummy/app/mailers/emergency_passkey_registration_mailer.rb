@@ -6,6 +6,8 @@ class EmergencyPasskeyRegistrationMailer < ApplicationMailer
   #
   def emergency_registration_request(emergency_passkey_registration:)
     @greeting = "Hi"
+    token = emergency_passkey_registration.generate_token_for(:emergency_registration)
+    @action_url = user_emergency_passkey_registration_url(token)
 
     mail to: "to@example.org"
   end
