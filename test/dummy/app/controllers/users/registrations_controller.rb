@@ -3,7 +3,6 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   include Devise::Passkeys::Controllers::RegistrationsControllerConcern
   include RelyingParty
-  include Practical::Views::JSONRedirection
 
   before_action :configure_permitted_parameters
   prepend_before_action :check_if_self_service_registration_allowed, only: [:new_challenge, :new, :create]
