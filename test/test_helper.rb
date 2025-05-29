@@ -40,5 +40,6 @@ end
 
 class ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
+  include Practical::Test::Helpers::FlashAssertions
   include Practical::Test::Helpers::Integration::Assertions
 end
