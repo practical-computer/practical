@@ -1,0 +1,16 @@
+<% content_for(:head) do %>
+  <%= javascript_include_tag "register-passkey-form", type: :module %>
+<% end %>
+
+<section class="wa-stack">
+  <h2><%= icon_text(icon: icon_set.emergency_passkey_registration_icon, text: guided_translate(".emergency_passkey_registrations.registration_form.title.text")) %></h2>
+
+
+  <%= guided_translate(".emergency_passkey_registrations.registration_form.description.html") %>
+
+  <%= render Forms::EmergencyPasskeyRegistration::RegistrationFormComponent.new(
+    form: @form,
+    url: use_user_emergency_passkey_registration_url(@token),
+    challenge_url: new_challenge_user_emergency_passkey_registration_url(@token)
+  ) %>
+</div>

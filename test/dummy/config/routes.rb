@@ -27,6 +27,15 @@ Rails.application.routes.draw do
           )
       post 'reauthenticate', to: 'users/reauthentication#reauthenticate', as: :user_reauthentication
     end
+
+    namespace :users, as: :user do
+      resources :emergency_passkey_registrations, only: [:new, :create, :show] do
+        member do
+          patch :use
+          post :new_challenge
+        end
+      end
+    end
   end
 
   # Defines the root path route ("/")

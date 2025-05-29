@@ -1,0 +1,13 @@
+<section class="wa-stack">
+  <h2><%= icon_text(icon: icon_set.emergency_passkey_registration_icon, text: guided_translate(".emergency_passkey_registrations.request_form.title.text")) %></h2>
+
+  <section>
+    <%= guided_translate(".emergency_passkey_registrations.request_form.description.html") %>
+
+    <%= render Forms::EmergencyPasskeyRegistration::RequestFormComponent.new(
+      form: @form,
+      url: user_emergency_passkey_registrations_url,
+      emergency_registration_class: EmergencyPasskeyRegistration
+    ) %>
+  </section>
+</section>
