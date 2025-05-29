@@ -1,0 +1,8 @@
+en:
+  users:
+    emergency_passkey_registrations:
+      request_form:
+        title:
+          text: "Can’t log in?"
+        description:
+          html: "<p>Not to worry! You can register a new passkey and get back into your account.</p>"
