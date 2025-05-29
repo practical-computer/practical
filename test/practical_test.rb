@@ -2,8 +2,8 @@
 
 require "test_helper"
 
-class Practical::FrameworkTest < ActiveSupport::TestCase
+class PracticalTest < ActiveSupport::TestCase
   test "it has a version number" do
-    assert Practical::Framework::VERSION
+    assert Practical::VERSION
   end
 end
