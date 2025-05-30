@@ -1,6 +1,6 @@
 require "test_helper"
 
-class Test < ActiveSupport::TestCase
+class SendEmergencyPasskeyRegistrationServiceTest < ActiveSupport::TestCase
   include ActionMailer::TestHelper
   include Practical::Test::Shared::Auth::Passkeys::Services::SendEmergencyRegistration
 
