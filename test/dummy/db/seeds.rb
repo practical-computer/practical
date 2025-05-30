@@ -1,1 +1,1 @@
-Oaken.seed :users
+Oaken.seed :users, :moderators
