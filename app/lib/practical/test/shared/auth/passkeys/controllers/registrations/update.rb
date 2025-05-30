@@ -42,7 +42,7 @@ module Practical::Test::Shared::Auth::Passkeys::Controllers::Registrations::Upda
 
       assert_no_difference "#{resource_class}.count" do
         update_registration_action(params: params)
-        assert_json_redirected_to expected_update_success_url
+        assert_update_redirect
       end
 
       resource_instance.reload
@@ -144,7 +144,7 @@ module Practical::Test::Shared::Auth::Passkeys::Controllers::Registrations::Upda
       assert_no_difference "#{resource_class}.count" do
         update_registration_action(params: params)
         assert_response :unprocessable_entity
-        assert_form_error_for_email(message: "can't be blank")
+        assert_form_error_for_blank_email
       end
 
       resource_instance.reload
@@ -178,7 +178,7 @@ module Practical::Test::Shared::Auth::Passkeys::Controllers::Registrations::Upda
       assert_no_difference "#{resource_class}.count" do
         update_registration_action(params: params)
         assert_response :unprocessable_entity
-        assert_form_error_for_email(message: "has already been taken")
+        assert_form_error_for_taken_email
       end
 
       resource_instance.reload
@@ -210,7 +210,7 @@ module Practical::Test::Shared::Auth::Passkeys::Controllers::Registrations::Upda
 
       assert_no_difference "#{resource_class}.count" do
         update_registration_action(params: params)
-        assert_json_redirected_to expected_update_success_url
+        assert_update_redirect
       end
 
       resource_instance.reload
