@@ -7,6 +7,7 @@ class Users::EmergencyPasskeyRegistrationsControllerTest < ActionDispatch::Integ
   include Practical::Test::Helpers::Passkey::TestHelper
   include Practical::Test::Shared::Auth::Passkeys::Controllers::EmergencyRegistration::Base
   include Practical::Test::Shared::Auth::Passkeys::Controllers::EmergencyRegistration::SelfService
+  include Practical::Test::Shared::Auth::Passkeys::Controllers::EmergencyRegistration::CrossPollination
 
   def owner_instance
     users.user_1
@@ -34,6 +35,10 @@ class Users::EmergencyPasskeyRegistrationsControllerTest < ActionDispatch::Integ
 
   def valid_emergency_registration_token
     valid_emergency_registration.generate_token_for(:emergency_registration)
+  end
+
+  def valid_emergency_registration_token_for_other_resource
+    moderators.moderator_1.emergency_passkey_registrations.first.generate_token_for(:emergency_registration)
   end
 
   def expired_emergency_registration_token
