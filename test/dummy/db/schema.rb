@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_30_130612) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_30_131920) do
   create_table "emergency_passkey_registrations", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "passkey_id"
@@ -46,6 +46,20 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_30_130612) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["address"], name: "index_ip_addresses_on_address", unique: true
+  end
+
+  create_table "moderator_emergency_passkey_registrations", force: :cascade do |t|
+    t.integer "moderator_id", null: false
+    t.integer "moderator_passkey_id"
+    t.integer "ip_address_id"
+    t.integer "user_agent_id"
+    t.datetime "used_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ip_address_id"], name: "idx_on_ip_address_id_f229b147e9"
+    t.index ["moderator_id"], name: "idx_on_moderator_id_0f6d1fe49a"
+    t.index ["moderator_passkey_id"], name: "idx_on_moderator_passkey_id_38c1dc176e"
+    t.index ["user_agent_id"], name: "idx_on_user_agent_id_9c77f3ea22"
   end
 
   create_table "moderator_passkeys", force: :cascade do |t|
@@ -110,6 +124,10 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_30_130612) do
   add_foreign_key "emergency_passkey_registrations", "passkeys"
   add_foreign_key "emergency_passkey_registrations", "user_agents"
   add_foreign_key "emergency_passkey_registrations", "users"
+  add_foreign_key "moderator_emergency_passkey_registrations", "ip_addresses"
+  add_foreign_key "moderator_emergency_passkey_registrations", "moderator_passkeys"
+  add_foreign_key "moderator_emergency_passkey_registrations", "moderators"
+  add_foreign_key "moderator_emergency_passkey_registrations", "user_agents"
   add_foreign_key "moderator_passkeys", "moderators"
   add_foreign_key "passkeys", "users"
 end
