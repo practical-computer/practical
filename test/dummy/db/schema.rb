@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_25_151140) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_30_130341) do
   create_table "emergency_passkey_registrations", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "passkey_id"
@@ -46,6 +46,17 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_25_151140) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["address"], name: "index_ip_addresses_on_address", unique: true
+  end
+
+  create_table "moderators", force: :cascade do |t|
+    t.string "email", null: false
+    t.string "webauthn_id", null: false
+    t.datetime "remember_created_at"
+    t.text "remember_token"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_moderators_on_email", unique: true
+    t.index ["remember_token"], name: "index_moderators_on_remember_token", unique: true
   end
 
   create_table "passkeys", force: :cascade do |t|
