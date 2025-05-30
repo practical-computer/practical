@@ -4,6 +4,7 @@ require "test_helper"
 
 class Users::ReauthenticationControllerTest < ActionDispatch::IntegrationTest
   include Practical::Test::Shared::Auth::Passkeys::Controllers::Reauthentication::Base
+  include Practical::Test::Shared::Auth::Passkeys::Controllers::Reauthentication::CrossPollination
   include Practical::Test::Helpers::Passkey::TestHelper
   include Practical::Test::Helpers::Passkey::System::RackTest
 
@@ -42,6 +43,10 @@ class Users::ReauthenticationControllerTest < ActionDispatch::IntegrationTest
 
   def sign_in_as_resource
     sign_in(users.user_1)
+  end
+
+  def sign_in_as_other_resource
+    sign_in(moderators.moderator_1, scope: :moderator)
   end
 
   def client
