@@ -4,7 +4,7 @@ class Users::EmergencyPasskeyRegistrationsController < DeviseController
   include Warden::WebAuthn::AuthenticationInitiationHelpers
   include Warden::WebAuthn::RegistrationHelpers
   include RelyingParty
-  include Practical::Auth::Passkeys::EmergencyRegistrations
+  include Practical::Auth::Passkeys::Controllers::EmergencyRegistrations
 
   before_action :find_emergency_registration, except: [:new, :create]
   before_action :verify_credential_integrity, only: [:use]

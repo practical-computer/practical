@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-module Practical::Auth::Passkeys::EmergencyRegistrations
+module Practical::Auth::Passkeys::Controllers::EmergencyRegistrations
   extend ActiveSupport::Concern
-  include Practical::Auth::Passkeys::WebAuthnDebugContext
+  include Practical::Auth::Passkeys::Controllers::WebAuthnDebugContext
 
   def new_challenge
     options_for_registration = generate_registration_options(
