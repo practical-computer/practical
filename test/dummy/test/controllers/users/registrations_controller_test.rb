@@ -7,7 +7,7 @@ class Users::RegistrationsControllerTest < ActionDispatch::IntegrationTest
   include Practical::Test::Helpers::Passkey::System::RackTest
   include Practical::Test::Shared::Auth::Passkeys::Controllers::Registrations::NoSelfSignup
   include Practical::Test::Shared::Auth::Passkeys::Controllers::Registrations::NoSelfDestroy
-  # include Practical::Test::Shared::Auth::Passkeys::Controllers::Registrations::Update
+  include Practical::Test::Shared::Auth::Passkeys::Controllers::Registrations::Update
 
   setup do
     get new_user_registration_url
@@ -58,7 +58,7 @@ class Users::RegistrationsControllerTest < ActionDispatch::IntegrationTest
   end
 
   def update_registration_action(params:)
-    patch user_registration_url, params: params
+    patch user_registration_url, params: params, as: :json
   end
 
   def other_resource
@@ -87,10 +87,6 @@ class Users::RegistrationsControllerTest < ActionDispatch::IntegrationTest
 
   alias_method :expected_stored_reauthentication_token, :get_reauthentication_token
 
-  def expected_update_success_url
-    edit_user_registration_url
-  end
-
   def assert_reauthentication_token_challenge
     assert_passkey_authentication_challenge(
       data: response.parsed_body,
@@ -104,12 +100,25 @@ class Users::RegistrationsControllerTest < ActionDispatch::IntegrationTest
     assert_equal expected, response.parsed_body
   end
 
-  def assert_form_error_for_email(message:)
+  def assert_update_redirect
+    assert_json_redirected_to edit_user_registration_url
+  end
+
+  def assert_form_error_for_blank_email
     assert_error_json_contains(
       container_id: "user_email_errors",
       element_id: "user_email",
-      message: message,
+      message: "can't be blank",
       type: "blank"
+    )
+  end
+
+  def assert_form_error_for_taken_email
+    assert_error_json_contains(
+      container_id: "user_email_errors",
+      element_id: "user_email",
+      message: "has already been taken",
+      type: "taken"
     )
   end
 

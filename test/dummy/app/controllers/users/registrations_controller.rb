@@ -34,7 +34,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
         end
       else
         respond_to do |format|
-          format.html { render :edit }
+          format.html { render :edit, status: :unprocessable_entity }
           format.json do
             errors = Practical::Views::ErrorHandling.build_error_json(model: resource, helpers: helpers)
             render json: errors, status: :unprocessable_entity
