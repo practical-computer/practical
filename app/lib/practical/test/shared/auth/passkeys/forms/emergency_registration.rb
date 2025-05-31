@@ -75,7 +75,6 @@ module Practical::Test::Shared::Auth::Passkeys::Forms::EmergencyRegistration
       assert_equal new_passkey, emergency_registration.passkey
       assert_equal time.to_formatted_s(:db), emergency_registration.used_at.to_formatted_s(:db)
 
-
       assert_new_passkey_email(new_passkey: new_passkey)
     end
   end

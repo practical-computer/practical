@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 users.defaults(name: -> { Faker::Name.name },
                email: -> { Faker::Internet.email },
                webauthn_id: -> { SecureRandom.uuid }

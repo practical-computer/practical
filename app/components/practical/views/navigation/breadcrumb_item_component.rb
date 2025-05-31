@@ -8,7 +8,6 @@ class Practical::Views::Navigation::BreadcrumbItemComponent < Practical::Views::
     self.options = options
   end
 
-
   def call
     tag.wa_breadcrumb_item(**mix({}, options)) {
       safe_join([

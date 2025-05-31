@@ -93,7 +93,8 @@ module Practical::Test::Shared::Auth::Passkeys::Controllers::EmergencyRegistrati
         assert_json_redirected_to expected_new_session_url
       end
 
-      credential = hydrate_response_from_raw_credential(client: client, relying_party: webauthn_relying_party, raw_credential: raw_credential).credential
+      credential = hydrate_response_from_raw_credential(client: client, relying_party: webauthn_relying_party,
+                                                        raw_credential: raw_credential).credential
 
       new_passkey = emergency_passkey_registration.reload.passkey
       assert_equal label, new_passkey.label
@@ -103,7 +104,7 @@ module Practical::Test::Shared::Auth::Passkeys::Controllers::EmergencyRegistrati
     end
 
     test "use: does not allow overriding who the passkey is registered for" do
-      old_owner = owner_instance
+      owner_instance
       emergency_passkey_registration = valid_emergency_registration
       assert_nil emergency_passkey_registration.used_at
 
@@ -126,14 +127,16 @@ module Practical::Test::Shared::Auth::Passkeys::Controllers::EmergencyRegistrati
       raw_credential = create_credential_and_return_payload_from_challenge(client: client, challenge: challenge)
       label = Faker::Computer.os
 
-      params = params_that_try_to_override_owner_during_emergency_registration(label: label, raw_credential: raw_credential)
+      params = params_that_try_to_override_owner_during_emergency_registration(label: label,
+                                                                               raw_credential: raw_credential)
 
       assert_difference "#{passkey_class}.count", +1 do
         use_emergency_registration_action(token: token, params: params)
         assert_json_redirected_to expected_new_session_url
       end
 
-      credential = hydrate_response_from_raw_credential(client: client, relying_party: webauthn_relying_party, raw_credential: raw_credential).credential
+      credential = hydrate_response_from_raw_credential(client: client, relying_party: webauthn_relying_party,
+                                                        raw_credential: raw_credential).credential
 
       new_passkey = emergency_passkey_registration.reload.passkey
       assert_equal label, new_passkey.label
@@ -321,7 +324,7 @@ module Practical::Test::Shared::Auth::Passkeys::Controllers::EmergencyRegistrati
       challenge = expected_stored_challenge
       client = webauthn_client
 
-      raw_credential = create_credential_and_return_payload_from_challenge(client: client, challenge: challenge)
+      create_credential_and_return_payload_from_challenge(client: client, challenge: challenge)
       label = Faker::Computer.os
 
       params = params_for_using_emergency_passkey_registration(label: label, raw_credential: nil)
@@ -355,7 +358,7 @@ module Practical::Test::Shared::Auth::Passkeys::Controllers::EmergencyRegistrati
       challenge = expected_stored_challenge
       client = webauthn_client
 
-      raw_credential = create_credential_and_return_payload_from_challenge(client: client, challenge: challenge)
+      create_credential_and_return_payload_from_challenge(client: client, challenge: challenge)
       label = Faker::Computer.os
 
       params = params_for_using_emergency_passkey_registration(label: label, raw_credential: "blah")

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateEmergencyPasskeyRegistrations < ActiveRecord::Migration[8.0]
   def change
     create_table :emergency_passkey_registrations do |t|

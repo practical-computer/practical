@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Practical::Views::ErrorHandling
   def self.build_error_json(model:, helpers:)
     return model.errors.map do |error|

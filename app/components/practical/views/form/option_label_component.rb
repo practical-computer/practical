@@ -9,7 +9,6 @@ class Practical::Views::Form::OptionLabelComponent < Practical::Views::BaseCompo
     self.options = options
   end
 
-
   def call
     tag.section(**mix({class: "wa-stack wa-size-s wa-gap-0"}, options)) {
       safe_join([

@@ -94,10 +94,10 @@ class Practical::Views::FormBuilders::Base < ActionView::Helpers::FormBuilder
 
   def radio_collection(field_method:, options:, collection_check_boxes_options: {})
     collection_radio_buttons(field_method,
-                           options,
-                           :value,
-                           :title,
-                           collection_check_boxes_options
+                             options,
+                             :value,
+                             :title,
+                             collection_check_boxes_options
     ) do |collection_builder|
       collection_builder.label(class: "wa-flank") do
         template.safe_join([

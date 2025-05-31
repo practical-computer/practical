@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Passkey < ApplicationRecord
   belongs_to :user
   has_one :emergency_passkey_registration, dependent: :destroy

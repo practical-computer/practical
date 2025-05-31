@@ -80,7 +80,8 @@ module Practical::Test::Shared::Auth::Passkeys::Controllers::Registrations::Self
       end
 
       new_resource = resource_class.last
-      credential = hydrate_response_from_raw_credential(client: client, relying_party: webauthn_relying_party, raw_credential: raw_credential).credential
+      credential = hydrate_response_from_raw_credential(client: client, relying_party: webauthn_relying_party,
+                                                        raw_credential: raw_credential).credential
 
       new_passkey = new_resource.passkeys.last
       assert_equal passkey_label, new_passkey.label
@@ -205,7 +206,7 @@ module Practical::Test::Shared::Auth::Passkeys::Controllers::Registrations::Self
 
       client = webauthn_client
       challenge = expected_stored_challenge
-      raw_credential = create_credential_and_return_payload_from_challenge(client: client, challenge: challenge)
+      create_credential_and_return_payload_from_challenge(client: client, challenge: challenge)
 
       params = params_for_registration(email: email, passkey_label: passkey_label, raw_credential: "   ")
 

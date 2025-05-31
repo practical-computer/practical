@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class EmergencyPasskeyRegistration < ApplicationRecord
   class AlreadyUsedError < StandardError; end
 

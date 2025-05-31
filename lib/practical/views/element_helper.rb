@@ -3,6 +3,7 @@
 module Practical::Views::ElementHelper
   extend ActiveSupport::Concern
 
+  # rubocop:disable Layout/BlockLength
   def mix(*args)
     args.each_with_object({}) do |object, result|
       result.merge!(object) do |_key, old, new|
@@ -37,6 +38,7 @@ module Practical::Views::ElementHelper
       end
     end
   end
+  # rubocop:enable Layout/BlockLength
 
   def grab(**bindings)
     if bindings.size > 1

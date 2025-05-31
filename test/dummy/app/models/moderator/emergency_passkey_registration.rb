@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Moderator::EmergencyPasskeyRegistration < ApplicationRecord
   class AlreadyUsedError < StandardError; end
 

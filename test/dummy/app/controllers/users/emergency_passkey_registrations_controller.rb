@@ -71,9 +71,10 @@ class Users::EmergencyPasskeyRegistrationsController < DeviseController
   end
 
   def find_emergency_registration
-    @emergency_registration = EmergencyPasskeyRegistration.find_by_token_for!(:emergency_registration,
-                                                                                    params[:id]
-                                                                                  )
+    @emergency_registration = EmergencyPasskeyRegistration.find_by_token_for!(
+      :emergency_registration,
+      params[:id]
+    )
     @token = params[:id]
   end
 

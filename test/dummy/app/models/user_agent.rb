@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UserAgent < ApplicationRecord
   validates :user_agent, presence: true, allow_blank: false, uniqueness: true
 

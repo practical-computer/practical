@@ -129,9 +129,12 @@ class Practical::Views::IconSet
     SpritesheetIconDefinition.new(method_name: :add_note_icon, icon_name: :"solid-note-circle-plus", library: :kit),
     SpritesheetIconDefinition.new(method_name: :edit_note_icon, icon_name: :"solid-note-pen", library: :kit),
     SpritesheetIconDefinition.new(method_name: :delete_note_icon, icon_name: :"solid-note-slash", library: :kit),
-    SpritesheetIconDefinition.new(method_name: :archive_membership_icon, icon_name: :"solid-id-badge-slash", library: :kit),
-    SpritesheetIconDefinition.new(method_name: :accepted_membership_invitation_icon, icon_name: :"solid-warehouse-circle-check", library: :kit),
-    SpritesheetIconDefinition.new(method_name: :destroy_membership_invitation_icon, icon_name: :"solid-warehouse-slash", library: :kit),
+    SpritesheetIconDefinition.new(method_name: :archive_membership_icon, icon_name: :"solid-id-badge-slash",
+                                  library: :kit),
+    SpritesheetIconDefinition.new(method_name: :accepted_membership_invitation_icon,
+                                  icon_name: :"solid-warehouse-circle-check", library: :kit),
+    SpritesheetIconDefinition.new(method_name: :destroy_membership_invitation_icon,
+                                  icon_name: :"solid-warehouse-slash", library: :kit),
     SpritesheetIconDefinition.new(method_name: :delete_note_icon, icon_name: :"solid-note-slash", library: :kit),
 
   ])
@@ -143,14 +146,17 @@ class Practical::Views::IconSet
   end
 
   def self.emergency_passkey_registration_icon
-    duotone_icon(name: :"light-emergency-on", options: {style: "--secondary-color: var(--wa-color-danger-fill-loud); --secondary-opacity: 0.7;"})
+    duotone_icon(name: :"light-emergency-on",
+                 options: {style: "--secondary-color: var(--wa-color-danger-fill-loud); --secondary-opacity: 0.7;"})
   end
 
   def self.signin_icon
-    duotone_icon(name: :"person-to-portal", options: {style: "--secondary-color: var(--wa-color-brand-fill-normal); --secondary-opacity: 0.9;"})
+    duotone_icon(name: :"person-to-portal",
+                 options: {style: "--secondary-color: var(--wa-color-brand-fill-normal); --secondary-opacity: 0.9;"})
   end
 
   def self.signout_icon
-    duotone_icon(name: :"person-from-portal", options: {style: "--secondary-color: var(--wa-color-brand-fill-normal); --secondary-opacity: 0.9;"})
+    duotone_icon(name: :"person-from-portal",
+                 options: {style: "--secondary-color: var(--wa-color-brand-fill-normal); --secondary-opacity: 0.9;"})
   end
 end

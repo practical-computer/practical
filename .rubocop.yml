@@ -33,8 +33,7 @@ Layout/DotPosition:
 Layout/EmptyLines:
   Exclude:
     - test/**/*
-    - lib/practical_framework/tests/**/*.rb
-    - lib/practical_framework/shared_test_modules/**/*.rb
+    - app/lib/practical/test/**/*.rb
     - db/seeds/**/*.rb
 
 Layout/IndentationConsistency:
@@ -47,8 +46,7 @@ Layout/LineLength:
   Exclude:
     - Gemfile
     - test/**/*
-    - lib/practical_framework/tests/**/*.rb
-    - lib/practical_framework/shared_test_modules/**/*.rb
+    - app/lib/practical/test/**/*.rb
     - lib/generators/**/*.rb
 
 Layout/SpaceBeforeBlockBraces:
@@ -112,20 +110,19 @@ Lint/UnusedMethodArgument:
 Lint/UselessAssignment:
   Exclude:
     - test/**/*
-    - lib/practical_framework/tests/**/*.rb
-    - lib/practical_framework/shared_test_modules/**/*.rb
+    - app/lib/practical/test/**/*.rb
     - db/seeds/**/*.rb
 
 Metrics/BlockLength:
   Exclude:
+    - .simplecov
     - test/**/*.rb
     - config/**/*.rb
     - db/migrate/*.rb
     - db/seeds.rb
     - db/seeds/**/*.rb
     - lib/tasks/**/*.rake
-    - lib/practical_framework/tests/**/*.rb
-    - lib/practical_framework/shared_test_modules/**/*.rb
+    - app/lib/practical/test/**/*.rb
     - Gemfile
     - app/components/**/*.rb
 
@@ -147,8 +144,7 @@ Metrics/MethodLength:
 Metrics/ModuleLength:
   Exclude:
     - test/**/*
-    - lib/practical_framework/tests/**/*.rb
-    - lib/practical_framework/shared_test_modules/**/*.rb
+    - app/lib/practical/test/**/*.rb
 
 Metrics/ParameterLists:
   Enabled: false

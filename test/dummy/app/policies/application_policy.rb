@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'action_policy'
 
 # Base class for application policies

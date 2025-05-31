@@ -34,7 +34,8 @@ class Practical::Views::Navigation::BreadcrumbsComponent < Practical::Views::Bas
   end
 
   def build_crumb(crumb:)
-    render(Practical::Views::Navigation::BreadcrumbItemComponent.new(options: { href: crumb.current? ? nil : crumb.url })) {
+    href = crumb.current? ? nil : crumb.url
+    render(Practical::Views::Navigation::BreadcrumbItemComponent.new(options: { href: href })) {
       crumb.name
     }
   end

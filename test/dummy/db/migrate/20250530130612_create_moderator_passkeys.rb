@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateModeratorPasskeys < ActiveRecord::Migration[8.0]
   def change
     create_table :moderator_passkeys do |t|

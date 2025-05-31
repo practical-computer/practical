@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Moderator::Passkey < ApplicationRecord
   belongs_to :moderator
   has_one :emergency_passkey_registration, class_name: "Moderator::EmergencyPasskeyRegistration", foreign_key: :moderator_passkey_id, dependent: :destroy

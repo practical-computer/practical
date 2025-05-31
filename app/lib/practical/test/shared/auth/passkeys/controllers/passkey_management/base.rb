@@ -58,14 +58,16 @@ module Practical::Test::Shared::Auth::Passkeys::Controllers::PasskeyManagement::
       raw_credential = create_credential_and_return_payload_from_challenge(client: client, challenge: challenge)
       label = Faker::Computer.os
 
-      params = params_for_creating_passkey(label: label, raw_credential: raw_credential, reauthentication_token: reauthentication_token)
+      params = params_for_creating_passkey(label: label, raw_credential: raw_credential,
+                                           reauthentication_token: reauthentication_token)
 
       assert_difference "#{passkey_class}.count", +1 do
         create_passkey_action(params: params)
         assert_create_redirect
       end
 
-      credential = hydrate_response_from_raw_credential(client: client, relying_party: webauthn_relying_party, raw_credential: raw_credential).credential
+      credential = hydrate_response_from_raw_credential(client: client, relying_party: webauthn_relying_party,
+                                                        raw_credential: raw_credential).credential
 
       new_passkey = resource_instance.passkeys.last
       assert_equal label, new_passkey.label
@@ -103,14 +105,16 @@ module Practical::Test::Shared::Auth::Passkeys::Controllers::PasskeyManagement::
       raw_credential = create_credential_and_return_payload_from_challenge(client: client, challenge: challenge)
       label = Faker::Computer.os
 
-      params = params_that_try_to_override_owner_when_creating_passkey(label: label, raw_credential: raw_credential, reauthentication_token: reauthentication_token)
+      params = params_that_try_to_override_owner_when_creating_passkey(label: label, raw_credential: raw_credential,
+                                                                       reauthentication_token: reauthentication_token)
 
       assert_difference "#{passkey_class}.count", +1 do
         create_passkey_action(params: params)
         assert_create_redirect
       end
 
-      credential = hydrate_response_from_raw_credential(client: client, relying_party: webauthn_relying_party, raw_credential: raw_credential).credential
+      credential = hydrate_response_from_raw_credential(client: client, relying_party: webauthn_relying_party,
+                                                        raw_credential: raw_credential).credential
 
       new_passkey = resource_instance.passkeys.last
       assert_equal label, new_passkey.label
@@ -148,7 +152,8 @@ module Practical::Test::Shared::Auth::Passkeys::Controllers::PasskeyManagement::
       raw_credential = create_credential_and_return_payload_from_challenge(client: client, challenge: challenge)
       label = Faker::Computer.os
 
-      params = params_for_creating_passkey(label: label, raw_credential: raw_credential, reauthentication_token: reauthentication_token)
+      params = params_for_creating_passkey(label: label, raw_credential: raw_credential,
+                                           reauthentication_token: reauthentication_token)
 
       assert_no_difference "#{passkey_class}.count", +1 do
         create_passkey_action(params: params)
@@ -186,7 +191,8 @@ module Practical::Test::Shared::Auth::Passkeys::Controllers::PasskeyManagement::
       raw_credential = create_credential_and_return_payload_from_challenge(client: client, challenge: challenge)
       label = Faker::Computer.os
 
-      params = params_for_creating_passkey(label: label, raw_credential: raw_credential, reauthentication_token: reauthentication_token)
+      params = params_for_creating_passkey(label: label, raw_credential: raw_credential,
+                                           reauthentication_token: reauthentication_token)
 
       assert_no_difference "#{passkey_class}.count", +1 do
         create_passkey_action(params: params)
@@ -224,7 +230,8 @@ module Practical::Test::Shared::Auth::Passkeys::Controllers::PasskeyManagement::
       raw_credential = create_credential_and_return_payload_from_challenge(client: client, challenge: challenge)
       label = "    "
 
-      params = params_for_creating_passkey(label: label, raw_credential: raw_credential, reauthentication_token: reauthentication_token)
+      params = params_for_creating_passkey(label: label, raw_credential: raw_credential,
+                                           reauthentication_token: reauthentication_token)
 
       assert_no_difference "#{passkey_class}.count", +1 do
         create_passkey_action(params: params)
@@ -263,7 +270,8 @@ module Practical::Test::Shared::Auth::Passkeys::Controllers::PasskeyManagement::
       raw_credential = create_credential_and_return_payload_from_challenge(client: client, challenge: challenge)
       label = target_passkey.label
 
-      params = params_for_creating_passkey(label: label, raw_credential: raw_credential, reauthentication_token: reauthentication_token)
+      params = params_for_creating_passkey(label: label, raw_credential: raw_credential,
+                                           reauthentication_token: reauthentication_token)
 
       assert_no_difference "#{passkey_class}.count", +1 do
         create_passkey_action(params: params)

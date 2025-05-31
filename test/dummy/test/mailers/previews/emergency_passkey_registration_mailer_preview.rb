@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Preview all emails at http://localhost:3000/rails/mailers/emergency_passkey_registration_mailer
 class EmergencyPasskeyRegistrationMailerPreview < ActionMailer::Preview
   # Preview this email at http://localhost:3000/rails/mailers/emergency_passkey_registration_mailer/emergency_registration_request

@@ -48,7 +48,6 @@ class Practical::Views::FlashMessagesComponent < Practical::Views::BaseComponent
       icon = data[:icon]
     end
 
-
     component = Practical::Views::ToastComponent.new(color_variant: color_variant)
 
     render component do |component|

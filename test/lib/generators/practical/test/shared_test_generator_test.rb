@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "test_helper"
 require "generators/practical/test/shared_test/shared_test_generator"
 
