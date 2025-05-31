@@ -1,4 +1,7 @@
 en:
+  app_navigation:
+    user_settings:
+      organizations_title: "Change Organization"
   organizations:
     title: "Available Organizations"
 
