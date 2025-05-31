@@ -1,0 +1,33 @@
+<table>
+  <caption>
+    <%= t("user_settings.passkeys.current_passkeys_title") %>
+  </caption>
+
+  <thead>
+    <tr>
+      <th>Label</th>
+      <th>Created at</th>
+      <th>Last used at</th>
+      <% if current_user.passkeys.count > 1 %>
+        <th></th>
+      <% end %>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% passkeys.each do |passkey| %>
+    <tr>
+      <td><%= passkey.label %></td>
+      <td><%= render Practical::Views::RelativeTimeComponent.new(time: passkey.created_at) %></td>
+      <td>
+        <% if passkey.last_used_at.present? %>
+          <%= render Practical::Views::RelativeTimeComponent.new(time: passkey.last_used_at) %>
+        <% end %>
+      </td>
+      <% if current_user.passkeys.count > 1 %>
+        <td><%= render Forms::User::DeletePasskeyComponent.new(passkey: passkey) %>
+      <% end %>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
