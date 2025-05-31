@@ -125,6 +125,15 @@ class Users::RegistrationsControllerTest < ActionDispatch::IntegrationTest
   def resource_class
     User
   end
+
+  def assert_authorized(&block)
+    assert_authorized_to(:manage?, resource_instance, with: UserPolicy, &block)
+  end
+
+  alias_method :assert_reauthentication_challenge_authorized, :assert_authorized
+  alias_method :assert_reauthentication_authorized, :assert_authorized
+  alias_method :assert_edit_authorized, :assert_authorized
+  alias_method :assert_update_authorized, :assert_authorized
 end
 
 class Users::RegistrationsControllerSelfSignupTest < ActionDispatch::IntegrationTest
