@@ -10,14 +10,18 @@ module Practical::Test::Shared::Auth::Passkeys::Controllers::Registrations::Self
       client = webauthn_client
       create_passkey_for_user_and_return_webauthn_credential(user: resource_instance)
 
-      new_reauthentication_challenge_action
+      assert_reauthentication_challenge_authorized do
+        new_reauthentication_challenge_action
+      end
       assert_response :ok
       assert_reauthentication_token_challenge
 
       challenge = response.parsed_body["challenge"]
       credential = get_credential_payload_from_challenge(client: client, challenge: challenge)
 
-      reauthenticate_action(params: {passkey_credential: credential.to_json})
+      assert_reauthentication_authorized do
+        reauthenticate_action(params: {passkey_credential: credential.to_json})
+      end
       assert_response :ok
       assert_equal expected_stored_reauthentication_token, response.parsed_body["reauthentication_token"]
       assert_nil expected_stored_reauthentication_challenge
@@ -28,8 +32,10 @@ module Practical::Test::Shared::Auth::Passkeys::Controllers::Registrations::Self
       resource_id = resource_instance.id
 
       assert_difference "#{resource_class}.count", -1 do
+      assert_destroy_authorized do
         destroy_registration_action(params: params)
         assert_redirected_to destroy_success_url
+      end
       end
 
       assert_nil resource_class.find_by(id: resource_id)
@@ -41,14 +47,18 @@ module Practical::Test::Shared::Auth::Passkeys::Controllers::Registrations::Self
       client = webauthn_client
       create_passkey_for_user_and_return_webauthn_credential(user: resource_instance)
 
-      new_reauthentication_challenge_action
+      assert_reauthentication_challenge_authorized do
+        new_reauthentication_challenge_action
+      end
       assert_response :ok
       assert_reauthentication_token_challenge
 
       challenge = response.parsed_body["challenge"]
       credential = get_credential_payload_from_challenge(client: client, challenge: challenge)
 
-      reauthenticate_action(params: {passkey_credential: credential.to_json})
+      assert_reauthentication_authorized do
+        reauthenticate_action(params: {passkey_credential: credential.to_json})
+      end
       assert_response :ok
       assert_equal expected_stored_reauthentication_token, response.parsed_body["reauthentication_token"]
       assert_nil expected_stored_reauthentication_challenge
@@ -73,14 +83,18 @@ module Practical::Test::Shared::Auth::Passkeys::Controllers::Registrations::Self
       client = webauthn_client
       create_passkey_for_user_and_return_webauthn_credential(user: resource_instance)
 
-      new_reauthentication_challenge_action
+      assert_reauthentication_challenge_authorized do
+        new_reauthentication_challenge_action
+      end
       assert_response :ok
       assert_reauthentication_token_challenge
 
       challenge = response.parsed_body["challenge"]
       credential = get_credential_payload_from_challenge(client: client, challenge: challenge)
 
-      reauthenticate_action(params: {passkey_credential: credential.to_json})
+      assert_reauthentication_authorized do
+        reauthenticate_action(params: {passkey_credential: credential.to_json})
+      end
       assert_response :ok
       assert_equal expected_stored_reauthentication_token, response.parsed_body["reauthentication_token"]
       assert_nil expected_stored_reauthentication_challenge
@@ -105,14 +119,18 @@ module Practical::Test::Shared::Auth::Passkeys::Controllers::Registrations::Self
       client = webauthn_client
       create_passkey_for_user_and_return_webauthn_credential(user: resource_instance)
 
-      new_reauthentication_challenge_action
+      assert_reauthentication_challenge_authorized do
+        new_reauthentication_challenge_action
+      end
       assert_response :ok
       assert_reauthentication_token_challenge
 
       challenge = response.parsed_body["challenge"]
       credential = get_credential_payload_from_challenge(client: client, challenge: challenge)
 
-      reauthenticate_action(params: {passkey_credential: credential.to_json})
+      assert_reauthentication_authorized do
+        reauthenticate_action(params: {passkey_credential: credential.to_json})
+      end
       assert_response :ok
       assert_equal expected_stored_reauthentication_token, response.parsed_body["reauthentication_token"]
       assert_nil expected_stored_reauthentication_challenge
