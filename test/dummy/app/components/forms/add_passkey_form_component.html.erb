@@ -1,0 +1,46 @@
+<% content_for(:head) do %>
+  <%= javascript_include_tag "register-passkey-form", type: :module %>
+<% end %>
+
+<unlock-form-after-reauthentication>
+  <%= form_wrapper do |f| %>
+    <%= f.fieldset do %>
+      <%= f.legend do %>
+        <%= f.fieldset_title(icon: icon_set.passkey_icon, title: t("user_settings.passkeys.create.form.title")) %>
+      <% end %>
+
+      <section>
+        <%= f.button_component(type: :button, options: {"unlock-button": true}) do
+          icon_text(icon: icon_set.passkey_icon, text: t("practical_framework.forms.unlock_title"))
+        end %>
+
+        <%= f.hidden_field :reauthentication_token %>
+      </section>
+
+      <%= f.fieldset(disabled: true, "fieldset-to-unlock": true) do %>
+        <%= f.input_component(:label) do |component|
+          component.with_label { f.field_title(icon: icon_set.passkey_label_icon, title: "Passkey Label") }
+
+          component.with_field {
+            f.text_field(:label, component.field_options(
+              placeholder: t("practical_framework.forms.placeholders.passkey_label"),
+              autofocus: "off",
+              required: true,
+              data: {"focusout-validation": true}
+            ))
+          }
+        end %>
+
+        <%= f.hidden_field :credential %>
+
+        <%= f.fallback_error_section(id: generic_errors_id) %>
+
+        <section>
+          <%= f.button_component(type: :submit, color_variant: :success) do
+            icon_text(icon: icon_set.passkey_icon, text: t("user_settings.passkeys.create.form.submit_button_title"))
+          end %>
+        </section>
+      <% end %>
+    <% end %>
+  <% end %>
+</unlock-form-after-reauthentication>
