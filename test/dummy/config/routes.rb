@@ -35,6 +35,18 @@ Rails.application.routes.draw do
           post :new_challenge
         end
       end
+
+      authenticated(:user) do
+        resources :passkeys, only: [:create, :destroy] do
+          collection do
+            post :new_create_challenge
+          end
+
+          member do
+            post :new_destroy_challenge
+          end
+        end
+      end
     end
   end
 
