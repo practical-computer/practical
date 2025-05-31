@@ -11,6 +11,7 @@ require_relative "../test/dummy/config/environment"
 ActiveRecord::Migrator.migrations_paths = [ File.expand_path("../test/dummy/db/migrate", __dir__) ]
 require "rails/test_help"
 require 'spy/integration'
+require "action_policy/test_helper"
 
 # Load fixtures from the engine
 if ActiveSupport::TestCase.respond_to?(:fixture_paths=)
@@ -43,4 +44,5 @@ class ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
   include Practical::Test::Helpers::FlashAssertions
   include Practical::Test::Helpers::Integration::Assertions
+  include ActionPolicy::TestHelper
 end
