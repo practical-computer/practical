@@ -82,7 +82,7 @@ class Users::EmergencyPasskeyRegistrationsController < DeviseController
   end
 
   def passkey_params
-    params.require(:user_emergency_passkey_registration_form).permit(:passkey_label, :passkey_credential)
+    params.require(:emergency_passkey_registration_form).permit(:passkey_label, :passkey_credential)
   end
 
   def registration_challenge_key

@@ -84,7 +84,7 @@ class Users::EmergencyPasskeyRegistrationsControllerTest < ActionDispatch::Integ
 
   def params_for_using_emergency_passkey_registration(label:, raw_credential:)
     {
-      user_emergency_passkey_registration_form: {
+      emergency_passkey_registration_form: {
         passkey_credential: JSON.generate(raw_credential),
         passkey_label: label
       }
@@ -93,7 +93,7 @@ class Users::EmergencyPasskeyRegistrationsControllerTest < ActionDispatch::Integ
 
   def params_that_try_to_override_owner_during_emergency_registration(label:, raw_credential:)
     {
-      user_emergency_passkey_registration_form: {
+      emergency_passkey_registration_form: {
         passkey_credential: JSON.generate(raw_credential),
         passkey_label: label,
         user_id: users.user_2.id
