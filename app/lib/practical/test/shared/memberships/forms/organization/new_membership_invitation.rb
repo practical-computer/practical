@@ -24,10 +24,10 @@ module Practical::Test::Shared::Memberships::Forms::Organization::NewMembershipI
 
     test "save!: raises validation errors from the underlying MembershipInvitation object" do
       form = form_class.new(email: Faker::Internet.email,
-                                                           current_organization: organizations.organization_1,
-                                                           sender: users.organization_2_owner,
-                                                           membership_type: :organization_manager
-                                                          )
+                            current_organization: organizations.organization_1,
+                            sender: users.organization_2_owner,
+                            membership_type: :organization_manager
+                          )
 
       assert_raises ActiveRecord::RecordInvalid do
         form.save!
@@ -39,10 +39,10 @@ module Practical::Test::Shared::Memberships::Forms::Organization::NewMembershipI
     test "save!: creates a new MembershipInvitation and enqueues the email" do
       email = Faker::Internet.email
       form = form_class.new(email: email,
-                                                           current_organization: organizations.organization_1,
-                                                           sender: users.organization_1_manager,
-                                                           membership_type: :staff
-                                                          )
+                            current_organization: organizations.organization_1,
+                            sender: users.organization_1_manager,
+                            membership_type: :staff
+                           )
 
       time = Time.now.utc
 
@@ -69,10 +69,10 @@ module Practical::Test::Shared::Memberships::Forms::Organization::NewMembershipI
       existing_invitation = organizations.organization_1.membership_invitations.create!(email: email, sender: users.organization_1_owner, membership_type: :organization_manager)
 
       form = form_class.new(email: email,
-                                                           current_organization: organizations.organization_1,
-                                                           sender: users.organization_1_manager,
-                                                           membership_type: :staff
-                                                          )
+                            current_organization: organizations.organization_1,
+                            sender: users.organization_1_manager,
+                            membership_type: :staff
+                           )
 
       time = Time.now.utc
 
@@ -99,10 +99,10 @@ module Practical::Test::Shared::Memberships::Forms::Organization::NewMembershipI
       existing_invitation = organizations.organization_1.membership_invitations.create!(email: email, sender: users.organization_1_manager, membership_type: :staff, user: user)
 
       form = form_class.new(email: email,
-                                                           current_organization: organizations.organization_1,
-                                                           sender: users.organization_1_manager,
-                                                           membership_type: :staff
-                                                          )
+                            current_organization: organizations.organization_1,
+                            sender: users.organization_1_manager,
+                            membership_type: :staff
+                           )
 
       assert_no_difference "#{membership_invitation_class}.count" do
       assert_no_difference "#{membership_class}.count" do
@@ -125,10 +125,10 @@ module Practical::Test::Shared::Memberships::Forms::Organization::NewMembershipI
       existing_membership.update!(state: :archived_by_user)
 
       form = form_class.new(email: email,
-                                                           current_organization: organizations.organization_2,
-                                                           sender: users.organization_2_owner,
-                                                           membership_type: :staff
-                                                          )
+                            current_organization: organizations.organization_2,
+                            sender: users.organization_2_owner,
+                            membership_type: :staff
+                           )
 
       assert_no_difference "#{membership_invitation_class}.count" do
       assert_no_difference "#{membership_class}.count" do
@@ -150,10 +150,10 @@ module Practical::Test::Shared::Memberships::Forms::Organization::NewMembershipI
       existing_membership = user.memberships.find_by!(organization: organization)
 
       form = form_class.new(email: email,
-                                                           current_organization: organizations.organization_1,
-                                                           sender: users.organization_1_manager,
-                                                           membership_type: :staff
-                                                          )
+                            current_organization: organizations.organization_1,
+                            sender: users.organization_1_manager,
+                            membership_type: :staff
+                          )
 
       assert_no_difference "#{membership_invitation_class}.count" do
       assert_no_difference "#{membership_class}.count" do
@@ -175,10 +175,10 @@ module Practical::Test::Shared::Memberships::Forms::Organization::NewMembershipI
       existing_membership = user.memberships.find_by!(organization: organization)
 
       form = form_class.new(email: email,
-                                                           current_organization: organizations.organization_1,
-                                                           sender: users.organization_1_manager,
-                                                           membership_type: :staff
-                                                          )
+                            current_organization: organizations.organization_1,
+                            sender: users.organization_1_manager,
+                            membership_type: :staff
+                          )
 
       assert_no_difference "#{membership_invitation_class}.count" do
       assert_no_difference "#{membership_class}.count" do

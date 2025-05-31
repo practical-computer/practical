@@ -10,10 +10,10 @@ module Practical::Test::Shared::Memberships::Forms::Organization::Membership
       membership = user.memberships.find_by!(organization: organization)
 
       form = form_class.new(current_user: user,
-                                              current_organization: organization,
-                                              membership: membership,
-                                              state: :archived_by_organization
-                                            )
+                            current_organization: organization,
+                            membership: membership,
+                            state: :archived_by_organization
+                          )
 
       assert_raises ActiveModel::ValidationError do
         form.save!
@@ -29,10 +29,10 @@ module Practical::Test::Shared::Memberships::Forms::Organization::Membership
       membership = users.organization_1_manager.memberships.find_by!(organization: organization)
 
       form = form_class.new(current_user: user,
-                                              current_organization: organization,
-                                              membership: membership,
-                                              state: :archived_by_organization
-                                            )
+                            current_organization: organization,
+                            membership: membership,
+                            state: :archived_by_organization
+                          )
 
       form.save!
 
@@ -45,10 +45,10 @@ module Practical::Test::Shared::Memberships::Forms::Organization::Membership
       membership = users.retired_staff.memberships.find_by!(organization: organization)
 
       form = form_class.new(current_user: user,
-                                              current_organization: organization,
-                                              membership: membership,
-                                              state: :pending_reacceptance
-                                            )
+                            current_organization: organization,
+                            membership: membership,
+                            state: :pending_reacceptance
+                          )
 
       form.save!
 
@@ -61,10 +61,10 @@ module Practical::Test::Shared::Memberships::Forms::Organization::Membership
       membership = users.organization_1_staff.memberships.find_by!(organization: organization)
 
       form = form_class.new(current_user: user,
-                                              current_organization: organization,
-                                              membership: membership,
-                                              state: :archived_by_organization
-                                            )
+                            current_organization: organization,
+                            membership: membership,
+                            state: :archived_by_organization
+                          )
 
       form.save!
 
@@ -77,10 +77,10 @@ module Practical::Test::Shared::Memberships::Forms::Organization::Membership
       membership = user.memberships.find_by!(organization: organization)
 
       form = form_class.new(current_user: user,
-                                              current_organization: organization,
-                                              membership: membership,
-                                              membership_type: :staff
-                                            )
+                            current_organization: organization,
+                            membership: membership,
+                            membership_type: :staff
+                          )
 
       assert_raises ActiveModel::ValidationError do
         form.save!
@@ -97,10 +97,10 @@ module Practical::Test::Shared::Memberships::Forms::Organization::Membership
       membership = users.organization_1_manager.memberships.find_by!(organization: organization)
 
       form = form_class.new(current_user: user,
-                                              current_organization: organization,
-                                              membership: membership,
-                                              membership_type: :staff
-                                            )
+                            current_organization: organization,
+                            membership: membership,
+                            membership_type: :staff
+                          )
 
       form.save!
 
@@ -114,10 +114,10 @@ module Practical::Test::Shared::Memberships::Forms::Organization::Membership
       membership = users.works_at_org_1_and_2.memberships.find_by!(organization: organization)
 
       form = form_class.new(current_user: user,
-                                              current_organization: organization,
-                                              membership: membership,
-                                              membership_type: :organization_manager
-                                            )
+                            current_organization: organization,
+                            membership: membership,
+                            membership_type: :organization_manager
+                          )
 
       form.save!
 
@@ -131,10 +131,10 @@ module Practical::Test::Shared::Memberships::Forms::Organization::Membership
       membership = users.retired_staff.memberships.find_by!(organization: organization)
 
       form = form_class.new(current_user: user,
-                                              current_organization: organization,
-                                              membership: membership,
-                                              membership_type: :organization_manager
-                                            )
+                            current_organization: organization,
+                            membership: membership,
+                            membership_type: :organization_manager
+                          )
 
       form.save!
 
@@ -148,10 +148,10 @@ module Practical::Test::Shared::Memberships::Forms::Organization::Membership
       membership = users.organization_1_staff.memberships.find_by!(organization: organization)
 
       form = form_class.new(current_user: user,
-                                              current_organization: organization,
-                                              membership: membership,
-                                              membership_type: :organization_manager
-                                            )
+                            current_organization: organization,
+                            membership: membership,
+                            membership_type: :organization_manager
+                          )
 
       form.save!
 
