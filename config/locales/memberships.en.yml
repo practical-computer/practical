@@ -1,4 +1,7 @@
 en:
+  organizations:
+    title: "Available Organizations"
+
   membership_invitations:
     accept_form:
       title: "Accept this invitation?"
