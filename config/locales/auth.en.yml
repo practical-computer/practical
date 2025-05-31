@@ -31,6 +31,17 @@ en:
         title: Create an account
         submit_button_title: "Sign up"
 
+    passkeys:
+      section_title: "Passkeys"
+      current_passkeys_title: "My passkeys"
+      create:
+        form:
+          title: "Add passkey"
+          submit_button_title: "Add passkey"
+      destroy:
+        form:
+          submit_button_title: "Remove"
+
   app_navigation:
     user_settings:
       home_title: "Home"
