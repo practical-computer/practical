@@ -6,13 +6,17 @@ module Practical::Test::Shared::Auth::Passkeys::Controllers::Registrations::Upda
   included do
     test "edit renders successfully for the resource" do
       sign_in_as_resource
-      edit_registration_action
+      assert_edit_authorized do
+        edit_registration_action
+      end
       assert_response :ok
     end
 
     test "edit does not render a different resource" do
       sign_in_as_resource
-      attempt_to_edit_other_resource_action
+      assert_edit_authorized do
+        attempt_to_edit_other_resource_action
+      end
       assert_response :ok
       assert_not_includes response.body, other_resource.email
     end
@@ -23,14 +27,18 @@ module Practical::Test::Shared::Auth::Passkeys::Controllers::Registrations::Upda
       client = webauthn_client
       create_passkey_for_user_and_return_webauthn_credential(user: resource_instance)
 
-      new_reauthentication_challenge_action
+      assert_reauthentication_challenge_authorized do
+        new_reauthentication_challenge_action
+      end
       assert_response :ok
       assert_reauthentication_token_challenge
 
       challenge = response.parsed_body["challenge"]
       credential = get_credential_payload_from_challenge(client: client, challenge: challenge)
 
-      reauthenticate_action(params: {passkey_credential: credential.to_json})
+      assert_reauthentication_authorized do
+        reauthenticate_action(params: {passkey_credential: credential.to_json})
+      end
       assert_response :ok
       assert_equal expected_stored_reauthentication_token, response.parsed_body["reauthentication_token"]
       assert_nil expected_stored_reauthentication_challenge
@@ -41,8 +49,10 @@ module Practical::Test::Shared::Auth::Passkeys::Controllers::Registrations::Upda
       params = params_for_updating_resource(email: new_email, reauthentication_token: reauthentication_token)
 
       assert_no_difference "#{resource_class}.count" do
+      assert_update_authorized do
         update_registration_action(params: params)
         assert_update_redirect
+      end
       end
 
       resource_instance.reload
@@ -55,14 +65,18 @@ module Practical::Test::Shared::Auth::Passkeys::Controllers::Registrations::Upda
       client = webauthn_client
       create_passkey_for_user_and_return_webauthn_credential(user: resource_instance)
 
-      new_reauthentication_challenge_action
+      assert_reauthentication_challenge_authorized do
+        new_reauthentication_challenge_action
+      end
       assert_response :ok
       assert_reauthentication_token_challenge
 
       challenge = response.parsed_body["challenge"]
       credential = get_credential_payload_from_challenge(client: client, challenge: challenge)
 
-      reauthenticate_action(params: {passkey_credential: credential.to_json})
+      assert_reauthentication_authorized do
+        reauthenticate_action(params: {passkey_credential: credential.to_json})
+      end
       assert_response :ok
       assert_equal expected_stored_reauthentication_token, response.parsed_body["reauthentication_token"]
       assert_nil expected_stored_reauthentication_challenge
@@ -89,14 +103,18 @@ module Practical::Test::Shared::Auth::Passkeys::Controllers::Registrations::Upda
       client = webauthn_client
       create_passkey_for_user_and_return_webauthn_credential(user: resource_instance)
 
-      new_reauthentication_challenge_action
+      assert_reauthentication_challenge_authorized do
+        new_reauthentication_challenge_action
+      end
       assert_response :ok
       assert_reauthentication_token_challenge
 
       challenge = response.parsed_body["challenge"]
       credential = get_credential_payload_from_challenge(client: client, challenge: challenge)
 
-      reauthenticate_action(params: {passkey_credential: credential.to_json})
+      assert_reauthentication_authorized do
+        reauthenticate_action(params: {passkey_credential: credential.to_json})
+      end
       assert_response :ok
       assert_equal expected_stored_reauthentication_token, response.parsed_body["reauthentication_token"]
       assert_nil expected_stored_reauthentication_challenge
@@ -123,14 +141,18 @@ module Practical::Test::Shared::Auth::Passkeys::Controllers::Registrations::Upda
       client = webauthn_client
       create_passkey_for_user_and_return_webauthn_credential(user: resource_instance)
 
-      new_reauthentication_challenge_action
+      assert_reauthentication_challenge_authorized do
+        new_reauthentication_challenge_action
+      end
       assert_response :ok
       assert_reauthentication_token_challenge
 
       challenge = response.parsed_body["challenge"]
       credential = get_credential_payload_from_challenge(client: client, challenge: challenge)
 
-      reauthenticate_action(params: {passkey_credential: credential.to_json})
+      assert_reauthentication_authorized do
+        reauthenticate_action(params: {passkey_credential: credential.to_json})
+      end
       assert_response :ok
       assert_equal expected_stored_reauthentication_token, response.parsed_body["reauthentication_token"]
       assert_nil expected_stored_reauthentication_challenge
@@ -142,9 +164,11 @@ module Practical::Test::Shared::Auth::Passkeys::Controllers::Registrations::Upda
       params = params_for_updating_resource(email: new_email, reauthentication_token: reauthentication_token)
 
       assert_no_difference "#{resource_class}.count" do
+      assert_update_authorized do
         update_registration_action(params: params)
         assert_response :unprocessable_entity
         assert_form_error_for_blank_email
+      end
       end
 
       resource_instance.reload
@@ -157,14 +181,18 @@ module Practical::Test::Shared::Auth::Passkeys::Controllers::Registrations::Upda
       client = webauthn_client
       create_passkey_for_user_and_return_webauthn_credential(user: resource_instance)
 
-      new_reauthentication_challenge_action
+      assert_reauthentication_challenge_authorized do
+        new_reauthentication_challenge_action
+      end
       assert_response :ok
       assert_reauthentication_token_challenge
 
       challenge = response.parsed_body["challenge"]
       credential = get_credential_payload_from_challenge(client: client, challenge: challenge)
 
-      reauthenticate_action(params: {passkey_credential: credential.to_json})
+      assert_reauthentication_authorized do
+        reauthenticate_action(params: {passkey_credential: credential.to_json})
+      end
       assert_response :ok
       assert_equal expected_stored_reauthentication_token, response.parsed_body["reauthentication_token"]
       assert_nil expected_stored_reauthentication_challenge
@@ -176,9 +204,11 @@ module Practical::Test::Shared::Auth::Passkeys::Controllers::Registrations::Upda
       params = params_for_updating_resource(email: new_email, reauthentication_token: reauthentication_token)
 
       assert_no_difference "#{resource_class}.count" do
+      assert_update_authorized do
         update_registration_action(params: params)
         assert_response :unprocessable_entity
         assert_form_error_for_taken_email
+      end
       end
 
       resource_instance.reload
@@ -191,14 +221,18 @@ module Practical::Test::Shared::Auth::Passkeys::Controllers::Registrations::Upda
       client = webauthn_client
       create_passkey_for_user_and_return_webauthn_credential(user: resource_instance)
 
-      new_reauthentication_challenge_action
+      assert_reauthentication_challenge_authorized do
+        new_reauthentication_challenge_action
+      end
       assert_response :ok
       assert_reauthentication_token_challenge
 
       challenge = response.parsed_body["challenge"]
       credential = get_credential_payload_from_challenge(client: client, challenge: challenge)
 
-      reauthenticate_action(params: {passkey_credential: credential.to_json})
+      assert_reauthentication_authorized do
+        reauthenticate_action(params: {passkey_credential: credential.to_json})
+      end
       assert_response :ok
       assert_equal expected_stored_reauthentication_token, response.parsed_body["reauthentication_token"]
       assert_nil expected_stored_reauthentication_challenge
@@ -209,8 +243,10 @@ module Practical::Test::Shared::Auth::Passkeys::Controllers::Registrations::Upda
       params = params_trying_to_update_other_resource(email: new_email, reauthentication_token: reauthentication_token)
 
       assert_no_difference "#{resource_class}.count" do
+      assert_update_authorized do
         update_registration_action(params: params)
         assert_update_redirect
+      end
       end
 
       resource_instance.reload
