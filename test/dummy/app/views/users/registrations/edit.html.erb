@@ -1,3 +1,16 @@
 <section class="wa-stack">
   <%= render Forms::User::ProfileFormComponent.new(user: current_user) %>
+
+  <section class="wa-stack">
+    <%= render User::PasskeysTableComponent.new(passkeys: current_user.passkeys) %>
+
+    <%= render Forms::AddPasskeyFormComponent.new(
+      scope: :passkey,
+      url: user_passkeys_url,
+      form_id: :"add-passkey-form",
+      reauthentication_challenge_url: new_user_reauthentication_challenge_url,
+      reauthentication_token_url: user_reauthentication_url,
+      challenge_url: new_create_challenge_user_passkeys_url
+    ) %>
+  </section>
 </section>
