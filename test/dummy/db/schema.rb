@@ -12,7 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_30_131920) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_31_175222) do
   create_table "emergency_passkey_registrations", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "passkey_id"
@@ -48,6 +48,37 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_30_131920) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["address"], name: "index_ip_addresses_on_address", unique: true
+  end
+
+  create_table "membership_invitations", force: :cascade do |t|
+    t.integer "membership_type", limit: 1, null: false
+    t.boolean "visible", default: true, null: false
+    t.string "email", null: false
+    t.integer "organization_id", null: false
+    t.integer "membership_id"
+    t.integer "user_id"
+    t.integer "sender_id"
+    t.datetime "last_sent_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_membership_invitations_on_email"
+    t.index ["membership_id"], name: "index_membership_invitations_on_membership_id"
+    t.index ["organization_id"], name: "index_membership_invitations_on_organization_id"
+    t.index ["sender_id"], name: "index_membership_invitations_on_sender_id"
+    t.index ["user_id"], name: "index_membership_invitations_on_user_id"
+  end
+
+  create_table "memberships", force: :cascade do |t|
+    t.integer "state", limit: 2, null: false
+    t.datetime "accepted_at"
+    t.integer "membership_type", limit: 2, null: false
+    t.integer "organization_id", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["organization_id"], name: "index_memberships_on_organization_id"
+    t.index ["user_id", "organization_id"], name: "index_memberships_on_user_id_and_organization_id", unique: true
+    t.index ["user_id"], name: "index_memberships_on_user_id"
   end
 
   create_table "moderator_emergency_passkey_registrations", force: :cascade do |t|
@@ -89,6 +120,12 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_30_131920) do
     t.index ["remember_token"], name: "index_moderators_on_remember_token", unique: true
   end
 
+  create_table "organizations", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "passkeys", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "label", null: false
@@ -126,6 +163,12 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_30_131920) do
   add_foreign_key "emergency_passkey_registrations", "passkeys"
   add_foreign_key "emergency_passkey_registrations", "user_agents"
   add_foreign_key "emergency_passkey_registrations", "users"
+  add_foreign_key "membership_invitations", "memberships"
+  add_foreign_key "membership_invitations", "organizations"
+  add_foreign_key "membership_invitations", "users"
+  add_foreign_key "membership_invitations", "users", column: "sender_id"
+  add_foreign_key "memberships", "organizations"
+  add_foreign_key "memberships", "users"
   add_foreign_key "moderator_emergency_passkey_registrations", "ip_addresses"
   add_foreign_key "moderator_emergency_passkey_registrations", "moderator_passkeys"
   add_foreign_key "moderator_emergency_passkey_registrations", "moderators"
