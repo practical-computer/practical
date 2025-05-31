@@ -11,6 +11,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   skip_verify_authorized only: [:new, :new_challenge, :create]
   before_action :authorize_management, except: [:new, :new_challenge, :create]
 
+  layout :resolve_layout
+
   # GET /resource/sign_up
   # def new
   #   super
@@ -64,6 +66,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   protected
+
+  def resolve_layout
+    case params[:action]
+    when "edit"
+      "main_application"
+    end
+  end
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_permitted_parameters
