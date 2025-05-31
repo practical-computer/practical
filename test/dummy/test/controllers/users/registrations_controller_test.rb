@@ -291,4 +291,12 @@ class Users::RegistrationsControllerSelfDestroyTest < ActionDispatch::Integratio
   end
 
   alias_method :expected_stored_reauthentication_token, :get_reauthentication_token
+
+  def assert_authorized(&block)
+    assert_authorized_to(:manage?, resource_instance, with: UserPolicy, &block)
+  end
+
+  alias_method :assert_reauthentication_challenge_authorized, :assert_authorized
+  alias_method :assert_reauthentication_authorized, :assert_authorized
+  alias_method :assert_destroy_authorized, :assert_authorized
 end
