@@ -1,0 +1,15 @@
+<h1><%= icon_text(icon: icon_set.swap_icon, text: t("organizations.title")) %></h1>
+
+<nav>
+  <ul>
+  <% @organizations.each do |organization| %>
+    <li>
+      <h2>
+        <%= link_to(organization_url(organization)) do %>
+          <%= icon_text(icon: icon_set.organization_icon, text: organization.name) %>
+        <% end %>
+      </h2>
+    </li>
+  <% end %>
+  </ul>
+</nav>

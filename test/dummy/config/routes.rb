@@ -50,6 +50,10 @@ Rails.application.routes.draw do
     end
   end
 
+  authenticated(:user) do
+    resources :organizations, only: [:index, :show]
+  end
+
   # Defines the root path route ("/")
   root "root#index"
 end
