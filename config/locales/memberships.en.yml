@@ -1,0 +1,57 @@
+en:
+  membership_invitations:
+    accept_form:
+      title: "Accept this invitation?"
+      description:
+        html: "<p>You have been invited to join a new organization.</p>"
+      details:
+        caption:
+          html: "Invitation details"
+      accept_as_current_user:
+        title: "Accept this invitation as %{name}"
+        description:
+          html: "<p>You’ll share the following information with %{organization_name}:</p>"
+        accept_button_title: "Accept invitation"
+        sign_out_button_title: "Actually, sign out"
+    new_user_from_invitation_form:
+      signin_button_title: "Wait! I have an account; let me sign in."
+      submit_button_title: "Sign up & Accept invitation"
+    accepted_message: "You’re now a member of %{organization_name}"
+    registered_message: "Your account has been created; you can login now!"
+
+  errors:
+    attributes:
+      sender:
+        cannot_manage_organization: "We were not able to send this; please contact support."
+      membership_type:
+        blank: "Please select a role."
+      resource:
+        cannot_access_organization: "We were not able to save this; please contact support."
+  activemodel:
+    errors:
+      models:
+        organization/new_membership_invitation_form:
+          attributes:
+            base:
+              cannot_be_resent: "We were not able to resend this invitation; please contact support."
+
+        organization/membership_form:
+          attributes:
+            state:
+              cannot_be_archived: "This member cannot be archived."
+            membership_type:
+              cannot_be_downgraded: "There must be at least one organization manager."
+
+        user/membership_form:
+          attributes:
+            state:
+              cannot_be_archived: "This membership cannot be archived."
+              cannot_be_changed: "This membership cannot be changed."
+              inclusion: "This membership can only be archived."
+  activerecord:
+    errors:
+      models:
+        membership:
+          attributes:
+            user:
+              taken: "This user is already part of this organization."
