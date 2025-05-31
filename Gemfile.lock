@@ -410,6 +410,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  action_policy
   capybara
   capybara-lockstep
   capybara-screenshot

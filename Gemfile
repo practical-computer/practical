@@ -25,6 +25,7 @@ gem "flipper"
 gem "flipper-active_record"
 
 gem "honeybadger"
+gem "action_policy"
 
 group :test do
   gem "simplecov"
