@@ -230,7 +230,7 @@ module Practical::Test::Shared::Auth::Passkeys::Controllers::PasskeyManagement::
         create_passkey_action(params: params)
       end
 
-      assert_response :bad_request
+      assert_response :unprocessable_entity
       assert_form_error_for_blank_label
     end
 
@@ -269,7 +269,7 @@ module Practical::Test::Shared::Auth::Passkeys::Controllers::PasskeyManagement::
         create_passkey_action(params: params)
       end
 
-      assert_response :bad_request
+      assert_response :unprocessable_entity
       assert_form_error_for_taken_label
     end
 
