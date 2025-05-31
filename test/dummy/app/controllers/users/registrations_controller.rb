@@ -8,6 +8,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   prepend_before_action :check_if_self_service_registration_allowed, only: [:new_challenge, :new, :create]
   prepend_before_action :check_if_self_service_destruction_allowed, only: [:destroy]
 
+  skip_verify_authorized only: [:new, :new_challenge, :create]
+  before_action :authorize_management, except: [:new, :new_challenge, :create]
+
   # GET /resource/sign_up
   # def new
   #   super
@@ -94,4 +97,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+
+  def authorize_management
+    authorize!(current_user, to: :manage?, with: UserPolicy)
+  end
 end

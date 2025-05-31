@@ -10,6 +10,8 @@ class Users::EmergencyPasskeyRegistrationsController < DeviseController
   before_action :verify_credential_integrity, only: [:use]
   before_action :verify_passkey_challenge, only: [:use]
 
+  skip_verify_authorized
+
   def new
     @form = NewEmergencyPasskeyRegistrationForm.new
   end
