@@ -31,6 +31,13 @@ en:
         title: Create an account
         submit_button_title: "Sign up"
 
+    destroy:
+      form:
+        title: "Delete my account"
+        submit_button_title: "Verify & destroy my account"
+      contact_support_message:
+        html: "<p>Want to delete your account? Please contact customer support</p>"
+
     passkeys:
       section_title: "Passkeys"
       current_passkeys_title: "My passkeys"
