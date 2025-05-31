@@ -11,7 +11,11 @@ class Users::PasskeysController  < DeviseController
     begin
       create_passkey(resource: resource) do |resource, passkey|
         if passkey.persisted?
-          json_redirect(location: edit_user_registration_url)
+          redirect_url = edit_user_registration_url
+          respond_to do |format|
+            format.html { redirect_to redirect_url }
+            format.json { json_redirect(location: redirect_url) }
+          end
           return
         end
       end
@@ -24,7 +28,11 @@ class Users::PasskeysController  < DeviseController
 
   def destroy
     @passkey.destroy
-    json_redirect(location: edit_user_registration_url)
+    redirect_url = edit_user_registration_url
+    respond_to do |format|
+      format.html { redirect_to redirect_url }
+      format.json { json_redirect(location: redirect_url) }
+    end
   end
 
   def set_relying_party_in_request_env

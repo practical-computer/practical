@@ -62,7 +62,7 @@ module Practical::Test::Shared::Auth::Passkeys::Controllers::PasskeyManagement::
 
       assert_difference "#{passkey_class}.count", +1 do
         create_passkey_action(params: params)
-        assert_json_redirected_to expected_success_url
+        assert_create_redirect
       end
 
       credential = hydrate_response_from_raw_credential(client: client, relying_party: webauthn_relying_party, raw_credential: raw_credential).credential
@@ -107,7 +107,7 @@ module Practical::Test::Shared::Auth::Passkeys::Controllers::PasskeyManagement::
 
       assert_difference "#{passkey_class}.count", +1 do
         create_passkey_action(params: params)
-        assert_json_redirected_to expected_success_url
+        assert_create_redirect
       end
 
       credential = hydrate_response_from_raw_credential(client: client, relying_party: webauthn_relying_party, raw_credential: raw_credential).credential
@@ -300,7 +300,7 @@ module Practical::Test::Shared::Auth::Passkeys::Controllers::PasskeyManagement::
       end
 
       assert_nil passkey_class.find_by(id: passkey.id)
-      assert_json_redirected_to expected_success_url
+      assert_destroy_redirect
     end
 
     test "destroy requires a reauthentication token to be present" do

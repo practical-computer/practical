@@ -152,8 +152,12 @@ class Users::PasskeysControllerTest < ActionDispatch::IntegrationTest
     )
   end
 
-  def expected_success_url
-    edit_user_registration_url
+  def assert_create_redirect
+    assert_redirected_to edit_user_registration_url
+  end
+
+  def assert_destroy_redirect
+    assert_redirected_to edit_user_registration_url
   end
 
   def resource_webauthn_client
