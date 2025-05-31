@@ -61,6 +61,12 @@ class Users::ReauthenticationControllerTest < ActionDispatch::IntegrationTest
     users.user_1.passkeys.map{|x| x.update!(external_id: SecureRandom.hex)}
   end
 
+  def assert_new_challenge_authorized(&block)
+    assert_authorized_to(:manage?, users.user_1, with: UserPolicy, &block)
+  end
+
+  alias_method :assert_reauthentication_authorized, :assert_new_challenge_authorized
+
   setup do
     create_passkey_for_user_and_return_webauthn_credential(user: users.user_1)
   end
