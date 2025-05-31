@@ -1,0 +1,19 @@
+<submit-form-after-reauthentication>
+  <%= form_wrapper do |f| %>
+    <%= f.fieldset do %>
+      <%= f.legend do %>
+        <%= icon_text(icon: icon_set.destroy_user_icon, text: t("user_settings.destroy.form.title")) %>
+      <% end %>
+
+      <%= f.hidden_field :reauthentication_token, id: dom_id(user, :destroy_reauthentication_token)%>
+
+      <%= f.fallback_error_section(id: generic_errors_id) %>
+
+      <section>
+        <%= f.button_component(type: :submit, color_variant: :danger) do
+          icon_text(icon: icon_set.passkey_icon, text: t("user_settings.destroy.form.submit_button_title"))
+        end %>
+      </section>
+    <% end %>
+  <% end %>
+</submit-form-after-reauthentication>
