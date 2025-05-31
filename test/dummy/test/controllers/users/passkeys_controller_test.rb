@@ -154,6 +154,20 @@ class Users::PasskeysControllerTest < ActionDispatch::IntegrationTest
     )
   end
 
+  def assert_authorized(&block)
+    assert_authorized_to(:manage?, resource_instance, with: UserPolicy, &block)
+  end
+
+  def assert_destroy_authorized(&block)
+    assert_authorized_to(:manage?, target_passkey, with: PasskeyPolicy, &block)
+  end
+
+  alias_method :assert_reauthentication_challenge_authorized, :assert_authorized
+  alias_method :assert_destroy_challenge_authorized, :assert_destroy_authorized
+  alias_method :assert_create_challenge_authorized, :assert_authorized
+  alias_method :assert_reauthentication_authorized, :assert_authorized
+  alias_method :assert_create_authorized, :assert_authorized
+
   def assert_create_redirect
     assert_redirected_to edit_user_registration_url
   end
