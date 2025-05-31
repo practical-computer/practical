@@ -13,4 +13,10 @@
       challenge_url: new_create_challenge_user_passkeys_url
     ) %>
   </section>
+
+  <% if Flipper.enabled?(:self_service_user_destruction) %>
+    <%= render Forms::User::DestroyComponent.new(user: current_user) %>
+  <% else %>
+    <%= t("user_settings.destroy.contact_support_message.html") %>
+  <% end %>
 </section>
