@@ -3,7 +3,7 @@
 module Practical::Test::Shared::Auth::Passkeys::Controllers::Registrations::Update
   extend ActiveSupport::Concern
 
-    included do
+  included do
     test "edit renders successfully for the resource" do
       sign_in_as_resource
       edit_registration_action
