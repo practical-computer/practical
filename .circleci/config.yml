@@ -72,7 +72,7 @@ jobs:
       - run:
           command: bundle exec rails db:schema:load --trace
           name: Database setup
-      - run: bin/rails app:assets:precompile
+      - run: bin/dummy_rails app:assets:precompile
       - run: bundle exec bin/test
       - store_test_results:
           path: test/reports
