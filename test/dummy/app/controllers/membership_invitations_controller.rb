@@ -15,12 +15,7 @@ class MembershipInvitationsController < ApplicationController
   def show
     store_location_for(:user, membership_invitation_path(params[:id]))
 
-    if !user_signed_in?
-      @new_user_form = CreateNewUserWithMembershipInvitationForm.new(user: User.new,
-                                                                     membership_invitation: @membership_invitation,
-                                                                     email: @membership_invitation.email,
-                                                                    )
-    end
+    prep_create_user_form if !user_signed_in?
   end
 
   def create_user_and_use
@@ -42,7 +37,10 @@ class MembershipInvitationsController < ApplicationController
     end
   rescue ActiveRecord::RecordInvalid
     respond_to do |format|
-      format.html { render :show, status: :unprocessable_entity }
+      format.html do
+        prep_create_user_form if !user_signed_in?
+        render :show, status: :unprocessable_entity
+      end
       format.json do
         errors = Practical::Views::ErrorHandling.build_error_json(model: resource, helpers: helpers)
         render json: errors, status: :unprocessable_entity
@@ -124,5 +122,12 @@ class MembershipInvitationsController < ApplicationController
     temporary_form.errors.add(:passkey_credential, message)
 
     return temporary_form
+  end
+
+  def prep_create_user_form
+    @new_user_form = CreateNewUserWithMembershipInvitationForm.new(user: User.new,
+                                                                   membership_invitation: @membership_invitation,
+                                                                   email: @membership_invitation.email,
+                                                                  )
   end
 end
