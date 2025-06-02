@@ -3,6 +3,8 @@ en:
     user_settings:
       organizations_title: "Change Organization"
       memberships_title: "Memberships"
+    organization_settings:
+      memberships_title: "Memberships"
   organizations:
     title: "Available Organizations"
 
