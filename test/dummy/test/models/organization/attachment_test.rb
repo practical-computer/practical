@@ -2,7 +2,7 @@ require "test_helper"
 
 class Organization::AttachmentTest < ActiveSupport::TestCase
   include Practical::Test::Helpers::Shrine::TestData
-  include Practical::Test::Shared::Attachment::Model::Attachment
+  include Practical::Test::Shared::Attachment::Model::Attachment::Base
 
   def uploader_class
     Organization::AttachmentUploader
