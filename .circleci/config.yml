@@ -5,7 +5,7 @@ version: 2.1
 rails_build: &rails_build
   resource_class: small
   docker:
-    - image: cimg/ruby:3.3-browsers
+    - image: cimg/ruby:3.4-browsers
   environment:
     BUNDLE_JOBS: '3'
     BUNDLE_RETRY: '3'
