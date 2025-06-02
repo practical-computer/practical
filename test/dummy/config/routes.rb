@@ -70,7 +70,17 @@ Rails.application.routes.draw do
   end
 
   authenticated(:user) do
-    resources :organizations, only: [:index, :show]
+    resources :organizations, only: [:index, :show] do
+      scope module: 'organizations' do
+        resources :membership_invitations, only: [:destroy] do
+          member do
+            patch :resend
+          end
+        end
+
+        resources :memberships, only: [:index, :create, :edit, :update, :destroy]
+      end
+    end
   end
 
   # Defines the root path route ("/")

@@ -1,0 +1,49 @@
+<table class="no-max-inline-size">
+  <col class="table-label">
+  <col span="3">
+  <thead>
+    <tr>
+      <th><%= icon_text(icon: icon_set.email_address_icon, text: "Email") %></th>
+      <th><%= icon_text(icon: icon_set.badge_icon, text: "Role") %></th>
+      <th><%= icon_text(icon: icon_set.link_icon, text: "Invite link") %></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+
+  <% membership_invitations.each do |membership_invitation| %>
+    <tr>
+      <td><%= helpers.mail_to membership_invitation.email %></td>
+      <td>
+        <%= icon_text(icon: icon_set.membership_type_icon(membership_type: membership_invitation.membership_type), text: t("membership_types.#{membership_invitation.membership_type}.human")) %>
+      </td>
+      <td>
+        <section class="wa-cluster">
+          <% url = membership_invitation_url(membership_invitation.generate_token_for(:invitation)) %>
+          <%= link_to(url) do %>
+            <%= icon_text(icon: icon_set.link_icon, text: "Invitation Link") %>
+          <% end %>
+
+          <%= tag.wa_copy_button(value: url) %>
+        </section>
+      </td>
+      <% if allowed_to?(:manage?, membership_invitation, with: Organization::MembershipInvitationPolicy) %>
+        <td>
+          <nav class="wa-cluster">
+            <% if membership_invitation.can_be_resent? %>
+              <%= button_to(resend_organization_membership_invitation_url(current_organization, membership_invitation), method: :patch) do %>
+                <%= icon_text(icon: icon_set.send_email_icon, text: t('organization_memberships.invitation.resend.button_title')) %>
+              <% end %>
+            <% end %>
+
+            <%= button_to(organization_membership_invitation_url(current_organization, membership_invitation), method: :delete, class: 'wa-danger') do %>
+              <%= icon_text(icon: icon_set.remove_link_icon, text: t('organization_memberships.invitation.revoke.button_title')) %>
+            <% end %>
+          </nav>
+        </td>
+      <% end %>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

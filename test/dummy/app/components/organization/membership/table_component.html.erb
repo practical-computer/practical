@@ -1,0 +1,45 @@
+<table>
+  <col class="table-label">
+  <col span="3">
+
+  <thead>
+    <tr>
+      <th><%= icon_text(icon: icon_set.user_name_icon, text: "Name") %></th>
+      <th><%= icon_text(icon: icon_set.badge_icon, text: "Role") %></th>
+      <th><%= icon_text(icon: icon_set.email_address_icon, text: "Email") %></th>
+      <% if allowed_to?(:manage?, current_organization, with: OrganizationPolicy) %>
+        <th></th>
+      <% end %>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% memberships.each do |membership| %>
+    <tr>
+      <td><%= membership.user.name %></td>
+      <td>
+        <%= icon_text(
+          icon: icon_set.membership_type_icon(membership_type: membership.membership_type),
+          text: t("membership_types.#{membership.membership_type}.human")
+        ) %>
+      </td>
+      <td><%= mail_to membership.user.email %></td>
+      <td>
+        <nav class="wa-cluster">
+          <%= link_to edit_organization_membership_url(current_organization, membership), class: "wa-button" do %>
+            <%= icon_text(icon: icon_set.badge_icon, text: t('organization_memberships.edit.link_title')) %>
+          <% end %>
+
+          <% if membership.archived_by_organization? %>
+            <%= render Organization::Membership::ActivateButtonToComponent.new(membership: membership) %>
+          <% end %>
+
+          <% if allowed_to?(:archive?, membership, with: Organization::MembershipPolicy) && membership.active? %>
+            <%= render Organization::Membership::ArchiveButtonToComponent.new(membership: membership) %>
+          <% end %>
+        </nav>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
