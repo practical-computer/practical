@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Organizations::MembershipsHelper
   def membership_type_options
     [
