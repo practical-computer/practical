@@ -2,8 +2,8 @@ require "test_helper"
 
 class Organization::AttachmentTest < ActiveSupport::TestCase
   include Practical::Test::Helpers::Shrine::TestData
-  include Practical::Test::Shared::Attachment::Model::Attachment::Base
-  include Practical::Test::Shared::Attachment::Model::Attachment::ForOrganization
+  include Practical::Test::Shared::Attachment::Models::Attachment::Base
+  include Practical::Test::Shared::Attachment::Models::Attachment::ForOrganization
 
   def uploader_class
     Organization::AttachmentUploader

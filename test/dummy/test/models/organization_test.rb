@@ -4,7 +4,7 @@ require "test_helper"
 
 class OrganizationTest < ActiveSupport::TestCase
   include Practical::Test::Shared::Memberships::Models::Organization::Base
-  include Practical::Test::Shared::Attachment::Model::Organization::HasAttachments
+  include Practical::Test::Shared::Attachment::Models::Organization::HasAttachments
 
   def model_class
     Organization

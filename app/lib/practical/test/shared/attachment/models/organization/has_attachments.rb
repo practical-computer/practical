@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Practical::Test::Shared::Attachment::Model::Organization::HasAttachments
+module Practical::Test::Shared::Attachment::Models::Organization::HasAttachments
   extend ActiveSupport::Concern
 
   included do
