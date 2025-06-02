@@ -32,3 +32,5 @@
 !.env.test
 !.env*.erb
 !.env*.template
+
+public/uploads/
