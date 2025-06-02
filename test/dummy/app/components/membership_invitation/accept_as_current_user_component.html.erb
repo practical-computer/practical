@@ -1,0 +1,32 @@
+<section class="wa-stack">
+  <h2><%= t("membership_invitations.accept_form.accept_as_current_user.title", name: current_user.name) %></h2>
+
+  <%= t("membership_invitations.accept_form.accept_as_current_user.description.html", organization_name: membership_invitation.organization.name) %>
+
+  <table>
+    <tbody>
+      <tr>
+        <th><%= render icon_set.email_address_icon %> Email</th>
+        <td><%= mail_to current_user.email %></td>
+      </tr>
+      <tr>
+        <th><%= render icon_set.user_name_icon %> Name</th>
+        <td><%= current_user.name %></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <section class="wa-cluster" role="list">
+    <div role="listitem">
+      <%= button_to(sign_out_then_show_membership_invitation_url(params[:id]), method: :delete) do %>
+        <%= icon_text(icon: icon_set.signout_icon, text: t('membership_invitations.accept_form.accept_as_current_user.sign_out_button_title')) %>
+      <% end %>
+    </div>
+
+    <div role="listitem">
+      <%= button_to(accept_as_current_user_membership_invitation_url(params[:id]), method: :patch, class: 'wa-success') do %>
+        <%= icon_text(icon: icon_set.accept_icon, text: t('membership_invitations.accept_form.accept_as_current_user.accept_button_title')) %>
+      <% end %>
+    </div>
+  </section>
+</section>

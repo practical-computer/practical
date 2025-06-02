@@ -1,2 +1,31 @@
-<h1>MembershipInvitations#show</h1>
-<p>Find me in app/views/membership_invitations/show.html.erb</p>
+<section class="wa-stack">
+  <h2><%= icon_text(icon: icon_set.memberships_icon, text: t("membership_invitations.accept_form.title")) %></h2>
+
+  <%= t("membership_invitations.accept_form.description.html") %>
+
+  <section class="wa-cluster">
+    <%= render MembershipInvitation::DetailsComponent.new(membership_invitation: @membership_invitation) %>
+  </section>
+
+  <% if user_signed_in? %>
+    <%= render MembershipInvitation::AcceptAsCurrentUserComponent.new(membership_invitation: @membership_invitation) %>
+  <% else %>
+    <% content_for(:head) do %>
+      <%= javascript_include_tag "register-passkey-form", type: :module %>
+    <% end %>
+    <section class="wa-stack">
+      <%= render Forms::MembershipInvitation::NewUserFromInvitationFormComponent.new(
+        form: @new_user_form,
+        invitation_id: params[:id]
+      ) %>
+
+      <wa-divider></wa-divider>
+      <section>
+        <%= button_to(new_user_session_url, method: :get) do %>
+          <%= icon_text(icon: icon_set.signin_icon, text: t('membership_invitations.new_user_from_invitation_form.signin_button_title')) %>
+        <% end %>
+      </section>
+    </section>
+  <% end %>
+</section>
+
