@@ -3,6 +3,7 @@ require "test_helper"
 class Organization::AttachmentTest < ActiveSupport::TestCase
   include Practical::Test::Helpers::Shrine::TestData
   include Practical::Test::Shared::Attachment::Model::Attachment::Base
+  include Practical::Test::Shared::Attachment::Model::Attachment::ForOrganization
 
   def uploader_class
     Organization::AttachmentUploader
@@ -25,7 +26,7 @@ class Organization::AttachmentTest < ActiveSupport::TestCase
   end
 
   def admin_user_in_organization
-    users.organization_1_department_head
+    users.organization_1_manager
   end
 
   def assert_saved_attachment(organization:, user:, file:, file_size:, file_name:, mime_type:)
