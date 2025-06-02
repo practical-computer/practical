@@ -81,6 +81,9 @@ jobs:
       - store_artifacts:
           path: log/
 
+      - store_artifacts:
+          path: tmp/capybara/
+
       - run:
           name: Stash Coverage Results
           command: |
