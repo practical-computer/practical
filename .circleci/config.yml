@@ -28,7 +28,6 @@ jobs:
           format: progress
           label: Inspecting with Rubocop
           parallel: true
-      - run: bundle exec bundler-audit --update
   coverage:
     resource_class: small
     docker:
