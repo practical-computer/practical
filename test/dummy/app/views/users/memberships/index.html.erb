@@ -1,0 +1,37 @@
+<section class="wa-stack">
+  <% if @memberships.active.any? %>
+    <section class="wa-stack">
+      <h2><%= icon_text(icon: icon_set.badge_icon, text: t("user_memberships.active.title")) %></h2>
+
+      <%= render User::Membership::TableComponent.new(memberships: @memberships.active) %>
+    </section>
+  <% end %>
+
+  <% if @memberships.pending_reacceptance.any? %>
+    <section class="wa-stack">
+      <h2><%= icon_text(icon: icon_set.waiting_icon, text: t("user_memberships.pending_reacceptance.title")) %></h2>
+
+      <%= render User::Membership::TableComponent.new(memberships: @memberships.pending_reacceptance) %>
+    </section>
+  <% end %>
+
+  <% if @membership_invitations.any? %>
+    <section class="wa-stack">
+      <h2><%= icon_text(icon: icon_set.sent_email_icon, text: t("user_memberships.pending_invitations.title")) %></h2>
+
+      <%= render User::Membership::InvitationTableComponent.new(membership_invitations: @membership_invitations) %>
+    </section>
+  <% end %>
+
+  <% if @memberships.archived_by_user.any? %>
+    <details class="wa-stack">
+      <summary>
+        <%= icon_text(icon: icon_set.archive_membership_icon, text: t("user_memberships.archived.title")) %>
+      </summary>
+
+      <section>
+        <%= render User::Membership::TableComponent.new(memberships: @memberships.archived_by_user) %>
+      </div>
+    </section>
+  <% end %>
+</section>

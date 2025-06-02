@@ -1,0 +1,34 @@
+<table>
+  <thead>
+    <tr>
+      <th><%= icon_text(icon: icon_set.organization_icon, text: "Name") %></th>
+      <th><%= icon_text(icon: icon_set.badge_icon, text: "Role") %></th>
+    </tr>
+    <th></th>
+  </thead>
+
+  <tbody>
+  <% memberships.each do |membership| %>
+    <tr>
+      <td>
+        <%= link_to(organization_url(membership.organization)) do %>
+          <%= render OrganizationNameComponent.new(organization: membership.organization) %>
+        <% end %>
+      </td>
+
+      <td>
+        <%= icon_text(icon: icon_set.membership_type_icon(membership_type: membership.membership_type), text: t("membership_types.#{membership.membership_type}.human")) %>
+      </td>
+
+      <td>
+        <nav class="wa-cluster">
+          <% if allowed_to?(:leave?, membership, with: User::MembershipPolicy) && membership.active? %>
+            <%= helpers.button_to(user_membership_url(membership), method: :patch, params: {user_membership_form: {state: :archived_by_user}}, class: "wa-danger") do %>
+              <%= icon_text(icon: icon_set.archive_membership_icon, text: t('user_memberships.archive.button_title')) %>
+            <% end %>
+          <% end %>
+        </nav>
+      </td>
+  <% end %>
+  </tbody>
+</table>

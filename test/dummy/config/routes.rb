@@ -50,6 +50,9 @@ Rails.application.routes.draw do
             post :new_destroy_challenge
           end
         end
+
+        resources :memberships, only: [:index, :update]
+        delete "membership_invitations/:id", to: "membership_invitations#destroy", as: :hide_membership_invitation
       end
     end
   end
