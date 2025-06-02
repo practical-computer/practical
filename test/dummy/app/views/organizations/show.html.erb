@@ -1,0 +1,13 @@
+<h2><%= current_organization.name %></h2>
+
+<h3>Dashboard</h3>
+
+<nav>
+  <ul class="wa-stack wa-gap-2xs">
+    <li>
+      <%= link_to organization_memberships_url(current_organization) do %>
+        <%= icon_text icon: icon_set.memberships_icon, text: t("app_navigation.organization_settings.memberships_title") %>
+      <% end %>
+    </li>
+  </ul>
+</nav>

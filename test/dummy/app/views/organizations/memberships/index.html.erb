@@ -1,0 +1,37 @@
+<section class="wa-stack">
+  <% if @memberships.active.any? %>
+    <section class="wa-stack">
+      <h2><%= icon_text(icon: icon_set.memberships_icon, text: t("organization_memberships.active.title")) %></h2>
+
+      <%= render Organization::Membership::TableComponent.new(memberships: @memberships.active) %>
+    </section>
+  <% end %>
+
+  <% if @memberships.pending_reacceptance.any? %>
+    <section class="wa-stack">
+      <h2><%= icon_text(icon: icon_set.waiting_icon, text: t("organization_memberships.pending_reacceptance.title")) %></h2>
+
+      <%= render Organization::Membership::TableComponent.new(memberships: @memberships.pending_reacceptance) %>
+    </section>
+  <% end %>
+
+  <% if allowed_to?(:manage?, current_organization, with: OrganizationPolicy) %>
+    <% if @membership_invitations.any? %>
+      <h2><%= icon_text(icon: icon_set.sent_email_icon, text: t("organization_memberships.pending_invitations.title")) %></h2>
+
+      <%= render Organization::Membership::InvitationTableComponent.new(membership_invitations: @membership_invitations) %>
+    <% end %>
+  <% end %>
+
+  <% if @memberships.archived_by_organization.any? %>
+    <section class="wa-stack">
+      <h2><%= icon_text(icon: icon_set.archive_membership_icon, text: t("organization_memberships.archived.title")) %></h2>
+
+      <%= render Organization::Membership::TableComponent.new(memberships: @memberships.archived_by_organization) %>
+    </section>
+  <% end %>
+
+  <section class="wa-stack">
+    <%= render Forms::Organization::MembershipInvitationFormComponent.new(form: @invitation_form) %>
+  </section>
+</section>

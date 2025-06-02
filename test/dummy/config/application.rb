@@ -35,3 +35,5 @@ module Dummy
     config.view_component.capture_compatibility_patch_enabled = true
   end
 end
+
+Rails.application.default_url_options = AppSettings.default_url_options

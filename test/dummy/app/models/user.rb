@@ -12,6 +12,9 @@ class User < ApplicationRecord
 
   has_many :passkeys, dependent: :destroy
   has_many :emergency_passkey_registrations, dependent: :destroy
+  has_many :memberships, class_name: "::Membership"
+  has_many :organizations, through: :memberships
+  has_many :membership_invitations
 
   def self.passkeys_class
     Passkey

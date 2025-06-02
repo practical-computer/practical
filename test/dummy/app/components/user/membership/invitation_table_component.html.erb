@@ -1,0 +1,38 @@
+<table>
+  <thead>
+    <tr>
+      <th><%= icon_text(icon: icon_set.organization_icon, text: "Name") %></th>
+      <th><%= icon_text(icon: icon_set.badge_icon, text: "Role") %></th>
+    </tr>
+    <th></th>
+  </thead>
+
+  <tbody>
+  <% membership_invitations.each do |membership_invitation| %>
+    <tr>
+      <td>
+        <%= link_to(organization_url(membership_invitation.organization)) do %>
+          <%= render OrganizationNameComponent.new(organization: membership_invitation.organization) %>
+        <% end %>
+      </td>
+
+      <td>
+        <%= icon_text(icon: icon_set.membership_type_icon(membership_type: membership_invitation.membership_type), text: t("membership_types.#{membership_invitation.membership_type}.human")) %>
+      </td>
+
+      <td>
+        <nav class="wa-cluster">
+          <% if allowed_to?(:manage?, membership_invitation, with: User::MembershipInvitationPolicy) %>
+            <%= button_to(accept_as_current_user_membership_invitation_url(membership_invitation.generate_token_for(:invitation)), method: :patch, class: "wa-success") do %>
+              <%= icon_text(icon: icon_set.accept_icon, text: t('user_memberships.invitation.accept.button_title')) %>
+            <% end %>
+
+            <%= button_to(user_hide_membership_invitation_url(membership_invitation), method: :delete, class: "wa-danger") do %>
+              <%= icon_text(icon: icon_set.deny_icon, text: t('user_memberships.invitation.hide.button_title')) %>
+            <% end %>
+          <% end %>
+        </nav>
+      </td>
+  <% end %>
+  </tbody>
+</table>

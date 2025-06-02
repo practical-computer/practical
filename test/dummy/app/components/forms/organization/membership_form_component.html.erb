@@ -1,0 +1,24 @@
+<%= form_wrapper do |f| %>
+  <section class="wa-stack">
+    <%= f.fieldset("aria-required": true, id: f.field_id(:membership_type)) do %>
+      <%= f.legend do %>
+        <%= f.fieldset_title(icon: icon_set.badge_icon, title: "Role") %>
+        <%= f.field_errors :membership_type, class: 'wa-visually-hidden', id!: f.field_id(:membership_type, :errors_aria) %>
+      <% end %>
+
+      <%= f.required_radio_collection_wrapper(:membership_type, "validation-message": form.errors.generate_message(:membership_type, :blank), class: "wa-stack") do %>
+        <%= f.radio_collection(field_method: :membership_type, options: helpers.membership_type_options) %>
+      <% end %>
+
+      <%= f.field_errors :membership_type, "aria-hidden": true, id!: f.field_id(:membership_type, :errors) %>
+    <% end %>
+
+    <%= f.fallback_error_section(id: generic_errors_id) %>
+
+    <section>
+      <%= f.button_component(type: :submit, color_variant: :success, options: {data: {disable: true}}) do
+        icon_text(icon: icon_set.send_email_icon, text: t("organization_memberships.edit.form.submit_button_title"))
+      end %>
+    </section>
+  </section>
+<% end %>

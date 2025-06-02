@@ -1,0 +1,16 @@
+<section class="wa-stack">
+  <h2><%= icon_text(icon: icon_set.memberships_icon, text: t("organization_memberships.edit.page_title", name: @membership.user.name)) %></h2>
+
+  <%= render Forms::Organization::MembershipFormComponent.new(form: @form) %>
+
+
+  <section class="wa-cluster">
+    <% if @membership.archived_by_organization? %>
+      <%= render Organization::Membership::ActivateButtonToComponent.new(membership: @membership) %>
+    <% end %>
+
+    <% if allowed_to?(:archive?, @membership, with: Organization::MembershipPolicy) && @membership.active? %>
+      <%= render Organization::Membership::ArchiveButtonToComponent.new(membership: @membership) %>
+    <% end %>
+  </section>
+</section>

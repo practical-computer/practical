@@ -11,6 +11,17 @@
           <%= icon_text icon: icon_set.home_icon, text: t("app_navigation.user_settings.home_title") %>
         <% end %>
       </li>
+
+      <li>
+        <%= link_to organizations_url do %>
+          <%= icon_text icon: icon_set.swap_icon, text: t("app_navigation.user_settings.organizations_title") %>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to user_memberships_url do %>
+          <%= icon_text icon: icon_set.memberships_icon, text: t("app_navigation.user_settings.memberships_title") %>
+        <% end %>
+      </li>
       <li>
         <%= link_to edit_user_registration_url do %>
           <%= icon_text icon: icon_set.profile_icon, text: t("app_navigation.user_settings.profile_title") %>

@@ -1,16 +1,18 @@
 # frozen_string_literal: true
 
 class Practical::Views::Form::FallbackErrorsSectionComponent < Practical::Views::BaseComponent
-  attr_reader :f, :blurb
-  def initialize(f:, blurb:, options:)
+  attr_reader :f, :id, :blurb
+  def initialize(f:, id:, blurb:, options:)
     @f = f
+    @id = id
     @blurb = blurb
     @options = options
   end
 
   def finalized_options
     mix({
-      class: ["error-section", "fallback-error-section", "wa-callout", "wa-danger"]
+      class: ["error-section", "fallback-error-section", "wa-callout", "wa-danger"],
+      id: id
     }, @options)
   end
 

@@ -1,0 +1,129 @@
+en:
+  app_navigation:
+    user_settings:
+      organizations_title: "Change Organization"
+      memberships_title: "Memberships"
+    organization_settings:
+      memberships_title: "Memberships"
+  organizations:
+    title: "Available Organizations"
+
+  organization_memberships:
+    title: "Organization Membership"
+    invitation_form:
+      title: "Invite someone to your organization"
+      submit_button_title: "Send invitation"
+    active:
+      title: "Active members"
+    pending_reacceptance:
+      title: "Waiting for response"
+    pending_invitations:
+      title: "Sent invitations"
+    archived:
+      title: "Archived members"
+
+    edit:
+      page_title: "Membership for %{name}"
+      link_title: "Edit"
+      form:
+        submit_button_title: "Update membership"
+
+    archive:
+      button_title: "Archive"
+
+    activate:
+      button_title: "Reactivate"
+
+    invitation:
+      resend:
+        button_title: "Resend"
+      revoke:
+        button_title: "Revoke"
+
+    invitation_sent_message: "Invitation sent to ‟%{email}”!"
+    invitation_revoked_message: "Invitation to ‟%{email}” has been revoked"
+    cannot_be_resent_message: "We were not able to resend this invitation; please contact support."
+    already_member_message: "Good news, everyone! They’re already a member!"
+    awaiting_reacceptance_message: "We’ve sent them an invitation to rejoin, please ask them to check their ‟Memberships” tab."
+    updated_message: "Updated membership!"
+
+  user_memberships:
+    title: "My Memberships"
+    active:
+      title: "Active memberships"
+    pending_reacceptance:
+      title: "Memberships awaiting my response"
+    pending_invitations:
+      title: "Membership invitations"
+    archived:
+      title: "Archived memberships"
+
+    archive:
+      button_title: "Leave"
+
+    invitation:
+      accept:
+        button_title: "Accept"
+      hide:
+        button_title: "Hide"
+    updated_message: "Updated membership!"
+    archived_message: "This membership has been archived."
+
+    invitation_hidden_message: "Hidden the invitation for %{organization_name}."
+
+  membership_invitations:
+    accept_form:
+      title: "Accept this invitation?"
+      description:
+        html: "<p>You have been invited to join a new organization.</p>"
+      details:
+        caption:
+          html: "Invitation details"
+      accept_as_current_user:
+        title: "Accept this invitation as %{name}"
+        description:
+          html: "<p>You’ll share the following information with %{organization_name}:</p>"
+        accept_button_title: "Accept invitation"
+        sign_out_button_title: "Actually, sign out"
+    new_user_from_invitation_form:
+      signin_button_title: "Wait! I have an account; let me sign in."
+      submit_button_title: "Sign up & Accept invitation"
+    accepted_message: "You’re now a member of %{organization_name}"
+    registered_message: "Your account has been created; you can login now!"
+
+  errors:
+    attributes:
+      sender:
+        cannot_manage_organization: "We were not able to send this; please contact support."
+      membership_type:
+        blank: "Please select a role."
+      resource:
+        cannot_access_organization: "We were not able to save this; please contact support."
+  activemodel:
+    errors:
+      models:
+        organization/new_membership_invitation_form:
+          attributes:
+            base:
+              cannot_be_resent: "We were not able to resend this invitation; please contact support."
+
+        organization/membership_form:
+          attributes:
+            state:
+              cannot_be_archived: "This member cannot be archived."
+            membership_type:
+              cannot_be_downgraded: "There must be at least one organization manager."
+
+        user/membership_form:
+          attributes:
+            state:
+              cannot_be_archived: "This membership cannot be archived."
+              cannot_be_changed: "This membership cannot be changed."
+              inclusion: "This membership can only be archived."
+  activerecord:
+    errors:
+      models:
+        membership:
+          attributes:
+            user:
+              taken: "This user is already part of this organization."
