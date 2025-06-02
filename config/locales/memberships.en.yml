@@ -2,8 +2,72 @@ en:
   app_navigation:
     user_settings:
       organizations_title: "Change Organization"
+      memberships_title: "Memberships"
   organizations:
     title: "Available Organizations"
+
+  organization_memberships:
+    title: "Organization Membership"
+    invitation_form:
+      title: "Invite someone to your organization"
+      submit_button_title: "Send invitation"
+    active:
+      title: "Active members"
+    pending_reacceptance:
+      title: "Waiting for response"
+    pending_invitations:
+      title: "Sent invitations"
+    archived:
+      title: "Archived members"
+
+    edit:
+      page_title: "Membership for %{name}"
+      link_title: "Edit"
+      form:
+        submit_button_title: "Update membership"
+
+    archive:
+      button_title: "Archive"
+
+    activate:
+      button_title: "Reactivate"
+
+    invitation:
+      resend:
+        button_title: "Resend"
+      revoke:
+        button_title: "Revoke"
+
+    invitation_sent_message: "Invitation sent to ‟%{email}”!"
+    invitation_revoked_message: "Invitation to ‟%{email}” has been revoked"
+    cannot_be_resent_message: "We were not able to resend this invitation; please contact support."
+    already_member_message: "Good news, everyone! They’re already a member!"
+    awaiting_reacceptance_message: "We’ve sent them an invitation to rejoin, please ask them to check their ‟Memberships” tab."
+    updated_message: "Updated membership!"
+
+  user_memberships:
+    title: "My Memberships"
+    active:
+      title: "Active memberships"
+    pending_reacceptance:
+      title: "Memberships awaiting my response"
+    pending_invitations:
+      title: "Membership invitations"
+    archived:
+      title: "Archived memberships"
+
+    archive:
+      button_title: "Leave"
+
+    invitation:
+      accept:
+        button_title: "Accept"
+      hide:
+        button_title: "Hide"
+    updated_message: "Updated membership!"
+    archived_message: "This membership has been archived."
+
+    invitation_hidden_message: "Hidden the invitation for %{organization_name}."
 
   membership_invitations:
     accept_form:
