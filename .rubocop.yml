@@ -407,3 +407,27 @@ Rails/FilePath:
 
 Naming/BlockForwarding:
   Enabled: false
+
+Minitest/RefuteFalse:
+  Enabled: false
+
+Minitest/AssertTruthy:
+  Enabled: false
+
+Minitest/EmptyLineBeforeAssertionMethods:
+  Enabled: false
+
+Minitest/MultipleAssertions:
+  Enabled: false
+
+Minitest/AssertEmptyLiteral:
+  Enabled: false
+
+Minitest/TestMethodName:
+  Enabled: false
+
+Minitest/AssertPredicate:
+  Enabled: false
+
+Minitest/AssertOperator:
+  Enabled: false

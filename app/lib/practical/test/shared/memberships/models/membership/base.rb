@@ -14,7 +14,7 @@ module Practical::Test::Shared::Memberships::Models::Membership::Base
 
       actual = model_class.states.keys.map(&:to_sym).to_set
 
-      assert expected_states.subset?(actual), [expected_states, actual]
+      assert_equal true, expected_states.subset?(actual), [expected_states, actual]
     end
 
     test "belongs_to the user resource" do
