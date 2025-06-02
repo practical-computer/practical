@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  get "membership_invitations/show"
+  get "membership_invitations/create_user_and_use"
+  get "membership_invitations/accept_as_current_user"
+  get "membership_invitations/sign_out_then_show"
   default_url_options protocol: :https
 
   devise_for :users, controllers: {
@@ -46,6 +50,18 @@ Rails.application.routes.draw do
             post :new_destroy_challenge
           end
         end
+      end
+    end
+  end
+
+  resources :membership_invitations, only: [:show] do
+    member do
+      post :new_create_challenge
+      post :create_user_and_use
+      delete :sign_out_then_show
+
+      authenticated(:user) do
+        patch :accept_as_current_user
       end
     end
   end
