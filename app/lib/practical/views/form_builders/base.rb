@@ -136,6 +136,7 @@ class Practical::Views::FormBuilders::Base < ActionView::Helpers::FormBuilder
   def fallback_error_section(blurb_key: :"practical_framework.forms.generic_error_blurb", id:, options: {})
     template.render Practical::Views::Form::FallbackErrorsSectionComponent.new(
       f: self,
+      id: id,
       blurb: template.translate(blurb_key, raise: true),
       options: options
     )
