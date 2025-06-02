@@ -68,8 +68,7 @@ jobs:
     steps:
       - checkout
       - ruby/install-deps
-      - node/install-packages:
-          pkg-manager: yarn
+      - node/install-packages
       - run:
           command: bundle exec rails db:schema:load --trace
           name: Database setup
