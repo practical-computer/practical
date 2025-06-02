@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Organization::Attachment < ApplicationRecord
   belongs_to :organization
   belongs_to :user
