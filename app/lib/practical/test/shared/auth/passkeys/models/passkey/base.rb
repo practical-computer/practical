@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Practical::Test::Shared::Auth::Passkeys::Models::Passkey
+module Practical::Test::Shared::Auth::Passkeys::Models::Passkey::Base
   extend ActiveSupport::Concern
 
   included do

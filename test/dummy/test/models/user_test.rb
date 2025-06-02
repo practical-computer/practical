@@ -5,7 +5,8 @@ require "test_helper"
 class UserTest < ActiveSupport::TestCase
   include Practical::Test::Shared::Models::NormalizedEmail
   include Practical::Test::Shared::Models::User
-  include Practical::Test::Shared::Auth::Passkeys::Models::ResourceWithPasskeys
+  include Practical::Test::Shared::Auth::Passkeys::Models::ResourceWithPasskeys::Base
+  include Practical::Test::Shared::Auth::Passkeys::Models::ResourceWithPasskeys::EmergencyRegistration
   include Practical::Test::Shared::Memberships::Models::User::Base
 
   def model_class
@@ -34,5 +35,9 @@ class UserTest < ActiveSupport::TestCase
 
   def membership_invitation_reflection_name
     :membership_invitations
+  end
+
+  def emergency_passkey_registration_class
+    EmergencyPasskeyRegistration
   end
 end
