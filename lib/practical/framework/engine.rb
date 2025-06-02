@@ -3,6 +3,11 @@
 module Practical
   module Framework
     class Engine < ::Rails::Engine
+      rake_tasks do
+      load 'tasks/practical/coverage.rake'
+      load 'tasks/practical/utility.rake'
+    end
+
       config.app_generators do |g|
         g.apply_rubocop_autocorrect_after_generate!
         g.test_framework :test_unit, fixture: false, fixture_replacement: :oaken

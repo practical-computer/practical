@@ -43,7 +43,7 @@ jobs:
       - run:
           name: Merge and check coverage
           command: |
-            bundle exec rake coverage:report
+            bundle exec rake app:coverage:report
       - store_artifacts:
           path: coverage
 
