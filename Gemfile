@@ -26,6 +26,7 @@ gem "flipper-active_record"
 
 gem "action_policy"
 gem "honeybadger"
+gem "pagy"
 
 group :test do
   gem "capybara"

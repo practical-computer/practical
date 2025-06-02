@@ -437,6 +437,7 @@ DEPENDENCIES
   honeybadger
   jsbundling-rails
   localhost
+  pagy
   practical!
   propshaft
   puma
