@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -12,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_31_175222) do
+ActiveRecord::Schema[8.0].define(version: 2025_06_02_221215) do
   create_table "emergency_passkey_registrations", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "passkey_id"
@@ -120,6 +118,16 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_31_175222) do
     t.index ["remember_token"], name: "index_moderators_on_remember_token", unique: true
   end
 
+  create_table "organization_attachments", force: :cascade do |t|
+    t.integer "organization_id", null: false
+    t.integer "user_id", null: false
+    t.json "attachment_data"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["organization_id"], name: "index_organization_attachments_on_organization_id"
+    t.index ["user_id"], name: "index_organization_attachments_on_user_id"
+  end
+
   create_table "organizations", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
@@ -174,5 +182,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_31_175222) do
   add_foreign_key "moderator_emergency_passkey_registrations", "moderators"
   add_foreign_key "moderator_emergency_passkey_registrations", "user_agents"
   add_foreign_key "moderator_passkeys", "moderators"
+  add_foreign_key "organization_attachments", "organizations"
+  add_foreign_key "organization_attachments", "users"
   add_foreign_key "passkeys", "users"
 end
