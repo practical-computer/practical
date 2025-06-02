@@ -30,3 +30,11 @@
 en:
   app_title:
     text: "Dummy App"
+
+  membership_types:
+    staff:
+      human: "Staff"
+      description: "Can do everything but invite new members."
+    organization_manager:
+      human: "Organization Manager"
+      description: "Can invite other users, along with access everything else."
