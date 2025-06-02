@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get "membership_invitations/create_user_and_use"
   get "membership_invitations/accept_as_current_user"
   get "membership_invitations/sign_out_then_show"
-  default_url_options protocol: :https
+  default_url_options AppSettings.default_url_options
 
   devise_for :users, controllers: {
     registrations: 'users/registrations',

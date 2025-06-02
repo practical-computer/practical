@@ -7,4 +7,8 @@ class AppSettings
 
   env_fetch(method_name: :relying_party_origin, key: "RELYING_PARTY_ORIGIN")
   env_fetch(method_name: :default_host, key: "DEFAULT_HOST")
+
+  def self.default_url_options
+    { host: self.default_host, protocol: :https }
+  end
 end
