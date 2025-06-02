@@ -4,7 +4,7 @@ require "test_helper"
 
 class ModeratorTest < ActiveSupport::TestCase
   include Practical::Test::Shared::Models::NormalizedEmail
-  include Practical::Test::Shared::Auth::Passkeys::Models::ResourceWithPasskeys
+  include Practical::Test::Shared::Auth::Passkeys::Models::ResourceWithPasskeys::Base
 
   def model_class
     Moderator

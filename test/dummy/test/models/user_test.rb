@@ -5,7 +5,7 @@ require "test_helper"
 class UserTest < ActiveSupport::TestCase
   include Practical::Test::Shared::Models::NormalizedEmail
   include Practical::Test::Shared::Models::User
-  include Practical::Test::Shared::Auth::Passkeys::Models::ResourceWithPasskeys
+  include Practical::Test::Shared::Auth::Passkeys::Models::ResourceWithPasskeys::Base
   include Practical::Test::Shared::Memberships::Models::User::Base
 
   def model_class
