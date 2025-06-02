@@ -34,3 +34,4 @@
 !.env*.template
 
 public/uploads/
+/test/dummy/public/assets/
