@@ -33,6 +33,7 @@ module Practical
           include Practical::Helpers::IconHelper
           include Practical::Helpers::TextHelper
           include Practical::Helpers::TranslationHelper
+          include Practical::Helpers::SelectorHelper
         end
       end
     end
