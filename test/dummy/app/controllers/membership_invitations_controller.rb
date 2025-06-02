@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class MembershipInvitationsController < ApplicationController
   include Warden::WebAuthn::AuthenticationInitiationHelpers
   include Warden::WebAuthn::RegistrationHelpers

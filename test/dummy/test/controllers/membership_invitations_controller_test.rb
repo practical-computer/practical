@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "test_helper"
 
 class MembershipInvitationsControllerTest < ActionDispatch::IntegrationTest
@@ -74,7 +76,7 @@ class MembershipInvitationsControllerTest < ActionDispatch::IntegrationTest
     {create_new_user_with_membership_invitation_form: {email: email, name: Faker::Name.name, passkey_label: passkey_label, passkey_credential: raw_credential.to_json}}
   end
 
-  def new_registration_challenge_action(token: , params:)
+  def new_registration_challenge_action(token:, params:)
     post new_create_challenge_membership_invitation_url(token), params: params, as: :json
   end
 

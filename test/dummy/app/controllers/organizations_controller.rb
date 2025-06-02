@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class OrganizationsController < Users::BaseController
   before_action :load_organizations
   before_action :set_current_organization, only: [:show]

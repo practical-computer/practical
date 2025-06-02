@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Practical::Memberships::Controllers::MembershipInvitations::RegisterWithPasskey
   extend ActiveSupport::Concern
   include Practical::Auth::Passkeys::Controllers::WebAuthnDebugContext
