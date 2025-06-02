@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   include Practical::Helpers::TranslationHelper
   include Practical::Views::FlashHelpers
   include Practical::Views::JSONRedirection
+  include Practical::Views::ErrorResponse
 
   verify_authorized
 
