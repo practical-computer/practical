@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html data-default-theme="match-system" data-theme="<%= theme_attribute %>">
   <head>
     <%= capybara_lockstep if defined?(Capybara::Lockstep) %>
     <title><%= content_for(:title) || "Dummy" %></title>
