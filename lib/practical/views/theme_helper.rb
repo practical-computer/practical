@@ -7,5 +7,7 @@ module Practical::Views::ThemeHelper
     else
       return "match-system"
     end
+  rescue
+    return "match-system"
   end
 end
