@@ -29,6 +29,7 @@ module Practical
       initializer 'practical-framework.view_helpers' do
         ActiveSupport.on_load(:action_view) do
           include Practical::Framework::Engine::PracticalFrameworkFormBuilderActiveSupportExtension
+          include Practical::Views::ThemeHelper
           include Practical::Helpers::FormWithHelper
           include Practical::Helpers::IconHelper
           include Practical::Helpers::TextHelper
