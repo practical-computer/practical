@@ -34,6 +34,7 @@ module Practical
           include Practical::Helpers::TextHelper
           include Practical::Helpers::TranslationHelper
           include Practical::Helpers::SelectorHelper
+          include Practical::Helpers::HoneybadgerHelpers
         end
       end
     end
