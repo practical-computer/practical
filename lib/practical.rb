@@ -15,8 +15,10 @@ module Practical
 end
 
 require "practical/views/element_helper"
+require "practical/views/theme_helper"
 require "practical/helpers/form_with_helper"
 require "practical/helpers/icon_helper"
 require "practical/helpers/text_helper"
 require "practical/helpers/translation_helper"
 require "practical/helpers/selector_helper"
+require "practical/helpers/honeybadger_helper"

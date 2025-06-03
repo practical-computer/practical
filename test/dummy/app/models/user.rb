@@ -16,6 +16,8 @@ class User < ApplicationRecord
   has_many :organizations, through: :memberships
   has_many :membership_invitations
 
+  enum :theme, { "match-system": 0, "light": 1, "dark": 2 }, default: :"match-system", suffix: "theme"
+
   def self.passkeys_class
     Passkey
   end

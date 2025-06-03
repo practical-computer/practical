@@ -12,7 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_06_02_221215) do
+ActiveRecord::Schema[8.0].define(version: 2025_06_03_003858) do
   create_table "emergency_passkey_registrations", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "passkey_id"
@@ -165,6 +165,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_06_02_221215) do
     t.datetime "updated_at", null: false
     t.datetime "remember_created_at"
     t.text "remember_token"
+    t.integer "theme", limit: 2, default: 0
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["remember_token"], name: "index_users_on_remember_token", unique: true
   end
