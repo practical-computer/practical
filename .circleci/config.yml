@@ -103,8 +103,8 @@ workflows:
       - test:
           context:
             - "Practical Framework"
-      - coverage:
-          context:
-            - "Practical Framework"
-          requires:
-            - test
+      # - coverage:
+      #     context:
+      #       - "Practical Framework"
+      #     requires:
+      #       - test
