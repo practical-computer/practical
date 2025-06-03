@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    practical (0.1.0)
+    practical (3.0.0.pre.alpha1)
       action_policy
       devise-passkeys
       honeybadger
