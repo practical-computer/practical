@@ -19,7 +19,7 @@ class Practical::Views::Form::FieldErrorsComponent < Practical::Views::BaseCompo
       errors = []
     end
 
-    finalized_options = mix({id: id, class: classes}, options)
+    finalized_options = mix({id: id, class: classes, data: {'pf-error-container': true}}, options)
 
     return label(object_method, nil, finalized_options) {
       render Practical::Views::Form::ErrorListComponent.new(errors: errors)

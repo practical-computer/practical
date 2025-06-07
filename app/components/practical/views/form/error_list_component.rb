@@ -8,7 +8,7 @@ class Practical::Views::Form::ErrorListComponent < Practical::Views::BaseCompone
   end
 
   def call
-    tag.ul(data: {'data-pf-error-container': true}) {
+    tag.ul {
       safe_join(errors.map{|error| render Practical::Views::Form::ErrorListItemComponent.new(error: error) })
     }
   end
