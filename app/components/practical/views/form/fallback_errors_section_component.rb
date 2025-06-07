@@ -11,7 +11,8 @@ class Practical::Views::Form::FallbackErrorsSectionComponent < Practical::Views:
 
   def finalized_options
     mix({
-      class: ["error-section", "fallback-error-section", "wa-callout", "wa-danger"],
+      class: ["wa-callout", "wa-danger"],
+      data: {"pf-error-container": true, "pf-fallback-error-section": true},
       id: id
     }, @options)
   end
