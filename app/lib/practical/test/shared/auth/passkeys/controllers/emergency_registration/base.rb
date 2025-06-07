@@ -90,7 +90,7 @@ module Practical::Test::Shared::Auth::Passkeys::Controllers::EmergencyRegistrati
 
       assert_difference "#{passkey_class}.count", +1 do
         use_emergency_registration_action(token: token, params: params)
-        assert_json_redirected_to expected_new_session_url
+        assert_successful_use_redirection
       end
 
       credential = hydrate_response_from_raw_credential(client: client, relying_party: webauthn_relying_party,
@@ -132,7 +132,7 @@ module Practical::Test::Shared::Auth::Passkeys::Controllers::EmergencyRegistrati
 
       assert_difference "#{passkey_class}.count", +1 do
         use_emergency_registration_action(token: token, params: params)
-        assert_json_redirected_to expected_new_session_url
+        assert_successful_use_redirection
       end
 
       credential = hydrate_response_from_raw_credential(client: client, relying_party: webauthn_relying_party,
@@ -237,7 +237,7 @@ module Practical::Test::Shared::Auth::Passkeys::Controllers::EmergencyRegistrati
       end
     end
 
-    test "use: returns a unprocessable_entity with the PracticalFramework error JSON if the passkey label is missing" do
+    test "use: returns a unprocessable_entity with a form error if the passkey label is missing" do
       emergency_passkey_registration = valid_emergency_registration
       assert_nil emergency_passkey_registration.used_at
 
@@ -270,7 +270,7 @@ module Practical::Test::Shared::Auth::Passkeys::Controllers::EmergencyRegistrati
       assert_form_error_for_label(message: "can't be blank", type: :blank)
     end
 
-    test "use: returns a unprocessable_entity with the PracticalFramework error JSON if the passkey challenge fails" do
+    test "use: returns a unprocessable_entity with a form error if the passkey challenge fails" do
       emergency_passkey_registration = valid_emergency_registration
       assert_nil emergency_passkey_registration.used_at
 
@@ -304,7 +304,7 @@ module Practical::Test::Shared::Auth::Passkeys::Controllers::EmergencyRegistrati
       assert_form_error_for_credential(message: I18n.translate("devise.emergency_passkey_registrations.webauthn_challenge_verification_error"))
     end
 
-    test "use: returns a unprocessable_entity with the PracticalFramework error JSON if the credential was missing" do
+    test "use: returns a unprocessable_entity with a form error if the credential was missing" do
       emergency_passkey_registration = valid_emergency_registration
       assert_nil emergency_passkey_registration.used_at
 
@@ -338,7 +338,7 @@ module Practical::Test::Shared::Auth::Passkeys::Controllers::EmergencyRegistrati
       assert_form_error_for_credential(message: I18n.translate("devise.emergency_passkey_registrations.credential_missing_or_could_not_be_parsed"))
     end
 
-    test "use: returns a unprocessable_entity with the PracticalFramework error JSON if the credential could not be parsed" do
+    test "use: returns a unprocessable_entity with a form error if the credential could not be parsed" do
       emergency_passkey_registration = valid_emergency_registration
       assert_nil emergency_passkey_registration.used_at
 

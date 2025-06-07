@@ -27,7 +27,7 @@ module Practical::Test::Shared::Auth::Passkeys::Controllers::EmergencyRegistrati
 
       request_emergency_registration_action(params: params, env: env)
 
-      assert_json_redirected_to expected_new_session_url
+      assert_registration_sent_redirection
       assert_flash_message(
         type: :notice,
         message: I18n.translate('emergency_passkey_registrations.sent_message'),
@@ -53,7 +53,7 @@ module Practical::Test::Shared::Auth::Passkeys::Controllers::EmergencyRegistrati
 
       request_emergency_registration_action(params: params, env: env)
 
-      assert_json_redirected_to expected_new_session_url
+      assert_registration_sent_redirection
       assert_flash_message(
         type: :notice,
         message: I18n.translate('emergency_passkey_registrations.sent_message'),
