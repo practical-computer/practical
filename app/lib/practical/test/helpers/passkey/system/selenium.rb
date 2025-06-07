@@ -24,7 +24,9 @@ module Practical::Test::Helpers::Passkey::System::Selenium
 
     driven_by :selenium, using: selenium_driver_key, screen_size: [1400, 1400] do |options|
       options.accept_insecure_certs = true
-      options.args << "--auto-open-devtools-for-tabs"
+      if ENV.has_key?("HEADLESS_TESTS")
+        options.args << "--headless=new"
+      end
     end
   end
 
