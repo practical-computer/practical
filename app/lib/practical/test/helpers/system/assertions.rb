@@ -3,7 +3,7 @@
 module Practical::Test::Helpers::System::Assertions
   def assert_toast_message(text:)
     within(".notification-messages") do
-      assert_selector("dialog", text: text)
+      assert_selector("dialog", text: text, visible: :all)
     end
   end
 
