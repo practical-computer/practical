@@ -18,7 +18,7 @@ module Practical
         def practical_form_with(**args, &block)
           original_field_error_proc = ::ActionView::Base.field_error_proc
           ::ActionView::Base.field_error_proc = ->(html_tag, instance) { html_tag }
-          content_tag(:"practical-framework-error-handling") do
+          content_tag(:"application-error-handling") do
             form_with(**args, &block)
           end
         ensure

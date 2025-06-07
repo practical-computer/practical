@@ -12,9 +12,9 @@ class Practical::Views::Form::ErrorListItemComponent < Practical::Views::BaseCom
   end
 
   def call
-    tag.li(class: 'wa-flank', data: {"error-type": error.type}) {
+    tag.li(class: 'wa-flank', data: {"pf-error-type": error.type, "pf-error-visible": true}) {
       render(icon_set.error_list_icon) +
-      tag.span(error.message)
+      tag.span(error.message, data: { "pf-error-message": true })
     }
   end
 end
