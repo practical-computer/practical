@@ -7,14 +7,14 @@ module Practical::Views::ErrorResponse
     format.json do
       errors = Practical::Views::ErrorHandling.build_error_json(model: model, helpers: helpers)
       yield(errors) if block_given?
-      render json: errors, status: :bad_request
+      render json: errors, status: :unprocessable_entity
     end
   end
 
   def render_html_error(action:, format:)
     format.html do
       yield  if block_given?
-      render action, status: :bad_request
+      render action, status: :unprocessable_entity
     end
   end
 
