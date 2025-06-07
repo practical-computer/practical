@@ -84,7 +84,7 @@ module Practical::Test::Shared::Auth::Passkeys::Controllers::EmergencyRegistrati
       client = webauthn_client
 
       raw_credential = create_credential_and_return_payload_from_challenge(client: client, challenge: challenge)
-      label = Faker::Computer.os
+      label = SecureRandom.hex
 
       params = params_for_using_emergency_passkey_registration(label: label, raw_credential: raw_credential)
 
@@ -125,7 +125,7 @@ module Practical::Test::Shared::Auth::Passkeys::Controllers::EmergencyRegistrati
       client = webauthn_client
 
       raw_credential = create_credential_and_return_payload_from_challenge(client: client, challenge: challenge)
-      label = Faker::Computer.os
+      label = SecureRandom.hex
 
       params = params_that_try_to_override_owner_during_emergency_registration(label: label,
                                                                                raw_credential: raw_credential)
@@ -168,7 +168,7 @@ module Practical::Test::Shared::Auth::Passkeys::Controllers::EmergencyRegistrati
       client = webauthn_client
 
       raw_credential = create_credential_and_return_payload_from_challenge(client: client, challenge: challenge)
-      label = Faker::Computer.os
+      label = SecureRandom.hex
 
       params = params_for_using_emergency_passkey_registration(label: label, raw_credential: raw_credential)
 
@@ -198,7 +198,7 @@ module Practical::Test::Shared::Auth::Passkeys::Controllers::EmergencyRegistrati
       client = webauthn_client
 
       raw_credential = create_credential_and_return_payload_from_challenge(client: client, challenge: challenge)
-      label = Faker::Computer.os
+      label = SecureRandom.hex
 
       params = params_for_using_emergency_passkey_registration(label: label, raw_credential: raw_credential)
 
@@ -228,7 +228,7 @@ module Practical::Test::Shared::Auth::Passkeys::Controllers::EmergencyRegistrati
       client = webauthn_client
 
       raw_credential = create_credential_and_return_payload_from_challenge(client: client, challenge: challenge)
-      label = Faker::Computer.os
+      label = SecureRandom.hex
 
       params = params_for_using_emergency_passkey_registration(label: label, raw_credential: raw_credential)
 
@@ -291,7 +291,7 @@ module Practical::Test::Shared::Auth::Passkeys::Controllers::EmergencyRegistrati
       client = webauthn_client
 
       raw_credential = create_credential_and_return_payload_from_challenge(client: client, challenge: challenge)
-      label = Faker::Computer.os
+      label = SecureRandom.hex
 
       params = params_for_using_emergency_passkey_registration(label: label, raw_credential: raw_credential)
 
@@ -325,7 +325,7 @@ module Practical::Test::Shared::Auth::Passkeys::Controllers::EmergencyRegistrati
       client = webauthn_client
 
       create_credential_and_return_payload_from_challenge(client: client, challenge: challenge)
-      label = Faker::Computer.os
+      label = SecureRandom.hex
 
       params = params_for_using_emergency_passkey_registration(label: label, raw_credential: nil)
 
@@ -359,7 +359,7 @@ module Practical::Test::Shared::Auth::Passkeys::Controllers::EmergencyRegistrati
       client = webauthn_client
 
       create_credential_and_return_payload_from_challenge(client: client, challenge: challenge)
-      label = Faker::Computer.os
+      label = SecureRandom.hex
 
       params = params_for_using_emergency_passkey_registration(label: label, raw_credential: "blah")
 
