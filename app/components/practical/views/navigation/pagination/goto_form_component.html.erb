@@ -9,13 +9,7 @@
   <% end %>
   <section class="wa-stack">
     <p><%= page_detail_text %></p>
-    <%= helpers.webawesome_form_with(
-      url: uri_parts.uri.to_s,
-      method: :get,
-      local: true,
-      builder: NewApplicationFormBuilder,
-      class: 'pagination-goto-form wa-size-s'
-    ) do |f| %>
+    <%= form_wrapper do |f| %>
       <% uri_parts.params.each do |key, value| %>
         <%= hidden_field_for_goto_form(key: key, value: value) %>
       <% end %>

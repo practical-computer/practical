@@ -2,6 +2,7 @@
 
 class Practical::Views::Navigation::Pagination::GotoFormComponent < Practical::Views::BaseComponent
   include Pagy::Frontend
+  include Practical::Views::FormWrapper
   attr_accessor :pagy, :dialog_id, :page_detail_text
 
   URIParts = Data.define(:uri, :params)
@@ -30,5 +31,20 @@ class Practical::Views::Navigation::Pagination::GotoFormComponent < Practical::V
     else
       helpers.hidden_field_tag key, value
     end
+  end
+
+  def generic_errors_id
+    "#{dialog_id}_pagination"
+  end
+
+  def form_wrapper(&block)
+    wrapped_form_with(
+      url: uri_parts.uri.to_s,
+      method: :get,
+      local: true,
+      builder: ApplicationFormBuilder,
+      class: 'pagination-goto-form wa-size-s',
+      &block
+    )
   end
 end
