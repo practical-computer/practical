@@ -39,7 +39,7 @@ class Practical::Views::Navigation::PaginationComponent < ApplicationComponent
 
     text = icon_text(
       icon: icon_set.previous_arrow,
-      text: pagy_t('pagy.nav.v2_prev')
+      text: pagy_t('pagy.nav.prev')
     )
 
     tag.div(class: classes, role: :listitem){
@@ -58,7 +58,7 @@ class Practical::Views::Navigation::PaginationComponent < ApplicationComponent
 
     text = icon_text(
       icon: icon_set.next_arrow,
-      text: pagy_t('pagy.nav.v2_next')
+      text: pagy_t('pagy.nav.next')
     )
 
     tag.div(class: classes, role: :listitem){
