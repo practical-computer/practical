@@ -18,7 +18,6 @@ class Practical::Views::ButtonToComponent < Practical::Views::BaseComponent
     }
 
     finalized_html_options = mix(html_option_defaults, html_options)
-
-    helpers.button_to(url, **options, **html_options) { content }
+    helpers.button_to(url, **options, **finalized_html_options) { content }
   end
 end
