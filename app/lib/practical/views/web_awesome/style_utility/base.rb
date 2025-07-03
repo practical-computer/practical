@@ -14,6 +14,10 @@ class Practical::Views::WebAwesome::StyleUtility::Base
     self.new(**options).to_css
   end
 
+  def self.web_awesome(**options)
+    self.new(**options).to_web_awesome
+  end
+
   def self.apply_css_prefix(value)
     return value if value.start_with?("wa-")
     "wa-#{value}"

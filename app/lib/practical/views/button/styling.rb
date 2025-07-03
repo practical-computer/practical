@@ -20,4 +20,12 @@ module Practical::Views::Button::Styling
   def css_classes_from_style_utilities
     helpers.class_names([appearance&.to_css, color_variant&.to_css, size&.to_css].compact)
   end
+
+  def attributes_from_style_utilities
+    return {
+      appearance: self.appearance&.to_web_awesome,
+      variant: self.color_variant&.to_web_awesome,
+      size: self.size&.to_web_awesome,
+    }.compact
+  end
 end

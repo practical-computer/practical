@@ -8,7 +8,11 @@ class Practical::Views::WebAwesome::StyleUtility::Size < Practical::Views::WebAw
   end
 
   def to_css
-    self.class.apply_css_prefix(self.class.from_alias(size: size))
+    self.class.apply_css_prefix(self.class.css_from_alias(size: size))
+  end
+
+  def to_web_awesome
+    return self.class.web_awesome_from_alias(size: size).to_s
   end
 
   def self.apply_css_prefix(value)
@@ -16,7 +20,20 @@ class Practical::Views::WebAwesome::StyleUtility::Size < Practical::Views::WebAw
     "wa-size-#{value}"
   end
 
-  def self.from_alias(size:)
+  def self.web_awesome_from_alias(size:)
+    case size.to_s.delete_prefix("wa-size-").to_sym
+    when :s
+      return :small
+    when :m
+      return :medium
+    when :l
+      return :large
+    else
+      return size.to_s.delete_prefix("wa-size-")
+    end
+  end
+
+  def self.css_from_alias(size:)
     case size.to_sym
     when :small
       return :s

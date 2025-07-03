@@ -8,7 +8,7 @@ class Practical::Views::WebAwesome::StyleUtility::ColorVariant < Practical::View
   end
 
   def to_web_awesome
-    variant
+    variant.delete_prefix("wa-")
   end
 
   def to_css

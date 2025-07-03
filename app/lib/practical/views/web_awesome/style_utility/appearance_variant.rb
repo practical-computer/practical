@@ -16,4 +16,8 @@ class Practical::Views::WebAwesome::StyleUtility::AppearanceVariant < Practical:
   def to_css
     ApplicationController.helpers.class_names(variants.map{|variant| self.class.apply_css_prefix(variant) })
   end
+
+  def to_web_awesome
+    variants.map{|x| x.delete_prefix("wa-")}.join(" ")
+  end
 end
