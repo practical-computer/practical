@@ -11,7 +11,7 @@ class Practical::Views::Form::FieldErrorsComponent < Practical::Views::BaseCompo
 
   def call
     id = f.field_errors_id(object_method)
-    classes = ["error-section", "wa-callout", "wa-danger"]
+    classes = ["error-section"]
     errors = f.errors_for(object_method)
 
     if errors.blank?
@@ -22,7 +22,9 @@ class Practical::Views::Form::FieldErrorsComponent < Practical::Views::BaseCompo
     finalized_options = mix({id: id, class: classes, data: {'pf-error-container': true}}, options)
 
     return label(object_method, nil, finalized_options) {
-      render Practical::Views::Form::ErrorListComponent.new(errors: errors)
+      tag.wa_callout(variant: :danger){
+        render Practical::Views::Form::ErrorListComponent.new(errors: errors)
+      }
     }
   end
 end

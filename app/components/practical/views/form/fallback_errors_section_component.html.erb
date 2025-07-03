@@ -1,7 +1,9 @@
 <%= tag.section(**finalized_options) do %>
-  <header>
-    <strong><%= blurb %></strong>
-  </header>
+  <%= tag.wa_callout(variant: :danger) do %>
+    <header>
+      <strong><%= blurb %></strong>
+    </header>
 
-  <%= render Practical::Views::Form::ErrorListComponent.new(errors: remaining_errors) %>
+    <%= render Practical::Views::Form::ErrorListComponent.new(errors: remaining_errors) %>
+  <% end %>
 <% end %>
