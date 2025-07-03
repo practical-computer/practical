@@ -11,6 +11,6 @@ class Practical::Views::ModalDialogComponent < Practical::Views::BaseComponent
   end
 
   def finalized_options
-    mix({id: id, open: open, data: {ensure_modal: true}, class: 'wa-dialog-stack-patch'}, options)
+    mix({id: id, open: open, data: {ensure_modal: true}, class: 'wa-dialog-stack-patch wa-dialog-contents-patch'}, options)
   end
 end
