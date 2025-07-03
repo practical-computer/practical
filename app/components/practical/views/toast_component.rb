@@ -12,8 +12,6 @@ class Practical::Views::ToastComponent < Practical::Views::BaseComponent
   end
 
   def finalized_callout_options
-    mix({
-      class: class_names("wa-callout", css_classes_from_style_utilities)
-    }, options)
+    mix(attributes_from_style_utilities, options)
   end
 end
