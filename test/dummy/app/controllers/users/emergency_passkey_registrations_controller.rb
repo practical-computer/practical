@@ -27,7 +27,12 @@ class Users::EmergencyPasskeyRegistrationsController < DeviseController
     end
 
     set_email_sent_flash
-    json_redirect(location: new_user_session_url)
+    redirect_url = new_user_session_url
+
+    respond_to do |format|
+      format.html { redirect_to redirect_url }
+      format.json { json_redirect(location: redirect_url) }
+    end
   end
 
   def show

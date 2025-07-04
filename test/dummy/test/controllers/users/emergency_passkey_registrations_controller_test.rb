@@ -113,6 +113,14 @@ class Users::EmergencyPasskeyRegistrationsControllerTest < ActionDispatch::Integ
     relying_party
   end
 
+  def assert_registration_sent_redirection
+    assert_redirected_to new_user_session_url
+  end
+
+  def assert_successful_use_redirection
+    assert_json_redirected_to new_user_session_url
+  end
+
   def use_emergency_registration_action(token:, params:)
     patch use_user_emergency_passkey_registration_url(id: token), params: params
   end
