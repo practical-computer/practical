@@ -69,7 +69,6 @@ class Practical::Views::IconSet
 
     IconDefinition.new(method_name: :apply_filters_icon, icon_name: :filter, preset: :solid),
     IconDefinition.new(method_name: :generic_add_icon, icon_name: :"circle-plus", preset: :solid),
-    IconDefinition.new(method_name: :error_list_icon, icon_name: :"circle-exclamation", preset: :solid),
     IconDefinition.new(method_name: :notes_icon, icon_name: :note, preset: :solid),
     IconDefinition.new(method_name: :dialog_close_icon, icon_name: :xmark, preset: :solid),
 
