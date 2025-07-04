@@ -1,30 +1,31 @@
 # frozen_string_literal: true
 
 class Practical::Views::Form::FieldErrorsComponent < Practical::Views::BaseComponent
-  attr_reader :f, :object_method, :options
+  attr_reader :f, :object_method, :multiple_errors_blurb, :options
 
-  def initialize(f:, object_method:, options:)
+  def initialize(f:, object_method:, multiple_errors_blurb:, options:)
     @f = f
     @object_method = object_method
+    @multiple_errors_blurb = multiple_errors_blurb
     @options = options
   end
 
-  def call
+  def errors
+    f.errors_for(object_method) || []
+  end
+
+  def finalized_options
     id = f.field_errors_id(object_method)
     classes = ["error-section"]
-    errors = f.errors_for(object_method)
 
     if errors.blank?
       classes << ["no-server-errors"]
-      errors = []
     end
 
-    finalized_options = mix({id: id, class: classes, data: {'pf-error-container': true}}, options)
-
-    return label(object_method, nil, finalized_options) {
-      tag.wa_callout(variant: :danger){
-        render Practical::Views::Form::ErrorListComponent.new(errors: errors)
-      }
-    }
+    return mix({
+      id: id,
+      class: classes,
+      data: {'pf-error-container': true}
+    }, options)
   end
 end

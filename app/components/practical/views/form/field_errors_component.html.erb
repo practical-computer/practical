@@ -1,0 +1,8 @@
+<wa-callout variant="danger">
+  <%= render icon_set.error_callout_icon %>
+
+  <%= label(object_method, nil, finalized_options) do %>
+    <header data-pf-field-multiple-errors-blurb><%= multiple_errors_blurb %></header>
+    <%= render Practical::Views::Form::ErrorListComponent.new(errors: errors) %>
+  <% end %>
+</wa-callout>

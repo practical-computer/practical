@@ -129,6 +129,7 @@ class Practical::Views::FormBuilders::Base < ActionView::Helpers::FormBuilder
     template.render Practical::Views::Form::FieldErrorsComponent.new(
       f: self,
       object_method: object_method,
+      multiple_errors_blurb: template.translate(:"practical_framework.forms.generic_error_blurb", raise: true),
       options: options
     )
   end
