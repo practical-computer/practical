@@ -139,6 +139,17 @@ class Practical::Views::IconSet
 
   ])
 
+  def self.error_callout_icon
+    preset = presets[:solid]
+
+    return icon(
+      name: :"circle-exclamation",
+      family: preset.family,
+      variant: preset.variant,
+      options: {slot: :icon}
+    )
+  end
+
   def self.profile_icon = badge_icon
 
   def self.checkbox_indeterminate_icon
