@@ -10,4 +10,5 @@ class Practical::Views::PageComponent < Practical::Views::BaseComponent
   renders_one :navigation
   renders_one :navigation_header
   renders_one :navigation_footer
+  renders_one :aside
 end

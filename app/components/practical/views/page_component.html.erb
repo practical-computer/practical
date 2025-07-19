@@ -45,6 +45,12 @@
     <%= content %>
   </main>
 
+  <% if aside? %>
+    <aside slot="aside">
+      <%= aside %>
+    </aside>
+  <% end %>
+
   <% if main_footer? %>
     <footer slot="main-footer">
       <%= main_footer %>
