@@ -37,24 +37,24 @@ class Practical::Views::IconSet
 
   def self.define_icons(icon_definitions:)
     icon_definitions.each do |icon_definition|
-      define_singleton_method(icon_definition.method_name) do
+      define_singleton_method(icon_definition.method_name) do |options = {}|
         preset = presets.fetch(icon_definition.preset.to_sym)
-        return icon(
+        return icon(**options.merge(
           family: preset.family,
           variant: preset.variant,
           name: icon_definition.icon_name
-        )
+        ))
       end
     end
   end
 
   def self.define_spritesheet_icons(spritesheet_icon_definitions:)
     spritesheet_icon_definitions.each do |icon_definition|
-      define_singleton_method(icon_definition.method_name) do
-        return spritesheet_icon(
+      define_singleton_method(icon_definition.method_name) do |options = {}|
+        return spritesheet_icon(**options.merge(
           library: icon_definition.library,
           name: icon_definition.icon_name
-        )
+        ))
       end
     end
   end
