@@ -3,9 +3,8 @@
 class Practical::Views::FlashMessagesComponent < Practical::Views::BaseComponent
   def call
     messages = toasts
-    return nil if messages.blank?
     tag.aside(class: 'notification-messages wa-stack') do
-      safe_join(messages)
+      safe_join(messages) if messages.present?
     end
   end
 
