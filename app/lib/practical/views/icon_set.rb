@@ -120,7 +120,7 @@ class Practical::Views::IconSet
     IconDefinition.new(method_name: :pdf_icon, icon_name: "file-pdf", preset: :duotone),
     IconDefinition.new(method_name: :heic_icon, icon_name: "file-image", preset: :duotone),
     IconDefinition.new(method_name: :missing_file_icon, icon_name: "file-slash", preset: :solid),
-    IconDefinition.new(method_name: :txt_icon, icon_name: "file-txt", preset: :duotone),
+    IconDefinition.new(method_name: :txt_icon, icon_name: "file", preset: :duotone),
   ])
 
   define_spritesheet_icons(spritesheet_icon_definitions: [
