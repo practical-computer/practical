@@ -41,11 +41,11 @@ class MembershipInvitationsController < ApplicationController
     respond_to do |format|
       format.html do
         prep_create_user_form if !user_signed_in?
-        render :show, status: :unprocessable_entity
+        render :show, status: :unprocessable_content
       end
       format.json do
         errors = Practical::Views::ErrorHandling.build_error_json(model: resource, helpers: helpers)
-        render json: errors, status: :unprocessable_entity
+        render json: errors, status: :unprocessable_content
       end
     end
   end
@@ -57,7 +57,7 @@ class MembershipInvitationsController < ApplicationController
   rescue ActiveRecord::RecordInvalid => e
     raise e unless e.record.errors.of_kind?(:user, :taken)
     flash[:alert] = flash_alert_with_icon(message: e.record.errors[:user].join)
-    render :show, status: :unprocessable_entity
+    render :show, status: :unprocessable_content
   end
 
   def sign_out_then_show

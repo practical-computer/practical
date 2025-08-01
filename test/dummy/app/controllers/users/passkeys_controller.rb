@@ -22,7 +22,7 @@ class Users::PasskeysController  < DeviseController
     rescue ActiveRecord::RecordInvalid => e
       process_create_validation_errors(e: e)
       errors = Practical::Views::ErrorHandling.build_error_json(model: e.record, helpers: helpers)
-      render json: errors, status: :unprocessable_entity
+      render json: errors, status: :unprocessable_content
     end
   end
 

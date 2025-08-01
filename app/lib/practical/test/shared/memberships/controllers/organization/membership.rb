@@ -162,7 +162,7 @@ module Practical::Test::Shared::Memberships::Controllers::Organization::Membersh
       end
       end
 
-      assert_response :unprocessable_entity
+      assert_response :unprocessable_content
 
       assert_error_json_contains(
         container_id: "organization_new_membership_invitation_form_base_errors",
@@ -194,7 +194,7 @@ module Practical::Test::Shared::Memberships::Controllers::Organization::Membersh
       end
       end
 
-      assert_response :unprocessable_entity
+      assert_response :unprocessable_content
 
       assert_error_json_contains(
         container_id: "organization_new_membership_invitation_form_base_errors",
@@ -226,7 +226,7 @@ module Practical::Test::Shared::Memberships::Controllers::Organization::Membersh
       end
       end
 
-      assert_response :unprocessable_entity
+      assert_response :unprocessable_content
 
       assert_error_json_contains(
         container_id: "organization_new_membership_invitation_form_base_errors",
@@ -254,7 +254,7 @@ module Practical::Test::Shared::Memberships::Controllers::Organization::Membersh
         post organization_memberships_url(organization), params: params, as: :json
       end
       end
-      assert_response :unprocessable_entity
+      assert_response :unprocessable_content
 
       assert_error_json_contains(
         container_id: "organization_new_membership_invitation_form_email_errors",
@@ -282,7 +282,7 @@ module Practical::Test::Shared::Memberships::Controllers::Organization::Membersh
         post organization_memberships_url(organization), params: params
       end
       end
-      assert_response :unprocessable_entity
+      assert_response :unprocessable_content
 
       assert_error_dom(
         container_id: "organization_new_membership_invitation_form_email_errors",
@@ -389,7 +389,7 @@ module Practical::Test::Shared::Memberships::Controllers::Organization::Membersh
         }}
       end
 
-      assert_response :unprocessable_entity
+      assert_response :unprocessable_content
 
       assert_error_dom(
         container_id: "generic_errors_organization_membership_form",

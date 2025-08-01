@@ -277,7 +277,7 @@ module Practical::Test::Shared::Auth::Passkeys::Controllers::PasskeyManagement::
       end
       end
 
-      assert_response :unprocessable_entity
+      assert_response :unprocessable_content
       assert_form_error_for_blank_label
     end
 
@@ -325,7 +325,7 @@ module Practical::Test::Shared::Auth::Passkeys::Controllers::PasskeyManagement::
       end
       end
 
-      assert_response :unprocessable_entity
+      assert_response :unprocessable_content
       assert_form_error_for_taken_label
     end
 

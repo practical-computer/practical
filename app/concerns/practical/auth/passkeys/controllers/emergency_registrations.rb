@@ -52,6 +52,6 @@ module Practical::Auth::Passkeys::Controllers::EmergencyRegistrations
       helpers: helpers
     )
 
-    render json: errors, status: :unprocessable_entity
+    render json: errors, status: :unprocessable_content
   end
 end

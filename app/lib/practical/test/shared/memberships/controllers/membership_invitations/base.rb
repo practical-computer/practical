@@ -101,7 +101,7 @@ module Practical::Test::Shared::Memberships::Controllers::MembershipInvitations:
         accept_as_current_user_action(token: visible_unused_token)
       end
 
-      assert_response :unprocessable_entity
+      assert_response :unprocessable_content
       assert_taken_flash_message
 
       assert_membership_invitation_unclaimed

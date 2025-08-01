@@ -237,7 +237,7 @@ module Practical::Test::Shared::Auth::Passkeys::Controllers::EmergencyRegistrati
       end
     end
 
-    test "use: returns a unprocessable_entity with a form error if the passkey label is missing" do
+    test "use: returns a unprocessable_content with a form error if the passkey label is missing" do
       emergency_passkey_registration = valid_emergency_registration
       assert_nil emergency_passkey_registration.used_at
 
@@ -265,12 +265,12 @@ module Practical::Test::Shared::Auth::Passkeys::Controllers::EmergencyRegistrati
         use_emergency_registration_action(token: token, params: params)
       end
 
-      assert_response :unprocessable_entity
+      assert_response :unprocessable_content
 
       assert_form_error_for_label(message: "can't be blank", type: :blank)
     end
 
-    test "use: returns a unprocessable_entity with a form error if the passkey challenge fails" do
+    test "use: returns a unprocessable_content with a form error if the passkey challenge fails" do
       emergency_passkey_registration = valid_emergency_registration
       assert_nil emergency_passkey_registration.used_at
 
@@ -299,12 +299,12 @@ module Practical::Test::Shared::Auth::Passkeys::Controllers::EmergencyRegistrati
         use_emergency_registration_action(token: token, params: params)
       end
 
-      assert_response :unprocessable_entity
+      assert_response :unprocessable_content
 
       assert_form_error_for_credential(message: I18n.translate("devise.emergency_passkey_registrations.webauthn_challenge_verification_error"))
     end
 
-    test "use: returns a unprocessable_entity with a form error if the credential was missing" do
+    test "use: returns a unprocessable_content with a form error if the credential was missing" do
       emergency_passkey_registration = valid_emergency_registration
       assert_nil emergency_passkey_registration.used_at
 
@@ -333,12 +333,12 @@ module Practical::Test::Shared::Auth::Passkeys::Controllers::EmergencyRegistrati
         use_emergency_registration_action(token: token, params: params)
       end
 
-      assert_response :unprocessable_entity
+      assert_response :unprocessable_content
 
       assert_form_error_for_credential(message: I18n.translate("devise.emergency_passkey_registrations.credential_missing_or_could_not_be_parsed"))
     end
 
-    test "use: returns a unprocessable_entity with a form error if the credential could not be parsed" do
+    test "use: returns a unprocessable_content with a form error if the credential could not be parsed" do
       emergency_passkey_registration = valid_emergency_registration
       assert_nil emergency_passkey_registration.used_at
 
@@ -367,7 +367,7 @@ module Practical::Test::Shared::Auth::Passkeys::Controllers::EmergencyRegistrati
         use_emergency_registration_action(token: token, params: params)
       end
 
-      assert_response :unprocessable_entity
+      assert_response :unprocessable_content
 
       assert_form_error_for_credential(message: I18n.translate("devise.emergency_passkey_registrations.credential_missing_or_could_not_be_parsed"))
     end

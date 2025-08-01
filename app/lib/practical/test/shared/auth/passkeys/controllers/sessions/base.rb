@@ -74,7 +74,7 @@ module Practical::Test::Shared::Auth::Passkeys::Controllers::Sessions::Base
       credential = get_credential_payload_from_challenge(client: client, challenge: challenge)
 
       authenticate_action(params: {resource_key => {passkey_credential: credential.to_json}})
-      assert_response :unprocessable_entity
+      assert_response :unprocessable_content
 
       assert_nil get_session_challenge
       assert_resource_not_signed_in
@@ -99,7 +99,7 @@ module Practical::Test::Shared::Auth::Passkeys::Controllers::Sessions::Base
       invalidate_all_credentials
 
       authenticate_action(params: {resource_key => {passkey_credential: credential.to_json}})
-      assert_response :unprocessable_entity
+      assert_response :unprocessable_content
 
       assert_nil get_session_challenge
       assert_resource_not_signed_in

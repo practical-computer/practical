@@ -54,7 +54,7 @@ class Users::EmergencyPasskeyRegistrationsController < DeviseController
       json_redirect(location: new_user_session_url)
     rescue ActiveRecord::RecordInvalid
       errors = Practical::Views::ErrorHandling.build_error_json(model: form, helpers: helpers)
-      render json: errors, status: :unprocessable_entity
+      render json: errors, status: :unprocessable_content
     end
   end
 

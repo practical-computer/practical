@@ -166,7 +166,7 @@ module Practical::Test::Shared::Auth::Passkeys::Controllers::Registrations::Upda
       assert_no_difference "#{resource_class}.count" do
       assert_update_authorized do
         update_registration_action(params: params)
-        assert_response :unprocessable_entity
+        assert_response :unprocessable_content
         assert_form_error_for_blank_email
       end
       end
@@ -206,7 +206,7 @@ module Practical::Test::Shared::Auth::Passkeys::Controllers::Registrations::Upda
       assert_no_difference "#{resource_class}.count" do
       assert_update_authorized do
         update_registration_action(params: params)
-        assert_response :unprocessable_entity
+        assert_response :unprocessable_content
         assert_form_error_for_taken_email
       end
       end

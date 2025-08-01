@@ -117,7 +117,7 @@ module Practical::Test::Shared::Auth::Passkeys::Controllers::Registrations::Self
       assert_no_difference "#{passkey_class}.count" do
       assert_no_difference "#{resource_class}.count" do
         create_resource_action(params: params)
-        assert_response :unprocessable_entity
+        assert_response :unprocessable_content
       end
       end
     end

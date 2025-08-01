@@ -160,7 +160,7 @@ module Practical::Test::Shared::Memberships::Controllers::MembershipInvitations:
       assert_no_difference "#{resource_class}.count" do
       assert_no_difference "#{membership_class}.count" do
         create_resource_action(token: token, params: params)
-        assert_response :unprocessable_entity
+        assert_response :unprocessable_content
       end
       end
       end
@@ -195,7 +195,7 @@ module Practical::Test::Shared::Memberships::Controllers::MembershipInvitations:
       assert_no_difference "#{resource_class}.count" do
       assert_no_difference "#{membership_class}.count" do
         create_resource_action(token: token, params: params)
-        assert_response :unprocessable_entity
+        assert_response :unprocessable_content
       end
       end
       end
@@ -230,7 +230,7 @@ module Practical::Test::Shared::Memberships::Controllers::MembershipInvitations:
       assert_no_difference "#{resource_class}.count" do
       assert_no_difference "#{membership_class}.count" do
         create_resource_action(token: token, params: params)
-        assert_response :unprocessable_entity
+        assert_response :unprocessable_content
       end
       end
       end
