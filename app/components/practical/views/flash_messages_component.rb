@@ -56,8 +56,11 @@ class Practical::Views::FlashMessagesComponent < Practical::Views::BaseComponent
     component = Practical::Views::ToastComponent.new(color_variant: color_variant)
 
     render component do |component|
-      if icon.present? && icon.is_a?(Hash)
-        icon = Practical::Views::IconComponent.new(**icon.to_h.symbolize_keys)
+      if icon.present? && (icon.is_a?(Hash) || icon.is_a?(ViewComponent::Base))
+        if icon.is_a?(Hash)
+          icon = Practical::Views::IconComponent.new(**icon.to_h.symbolize_keys)
+        end
+
         component.with_icon do
           render icon
         end
