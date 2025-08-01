@@ -18,6 +18,6 @@ module Practical::Test::Helpers::Integration::Assertions
   end
 
   def assert_error_dom(container_id:, message:)
-    assert_dom("##{container_id}", text: message)
+    assert_dom("##{container_id}", text: %r{#{message}})
   end
 end
