@@ -26,11 +26,13 @@ module Practical::Test::Shared::Memberships::Controllers::User::Membership
       end
 
       assert_response :ok
-      assert_dom 'td', text: active_membership.organization.name
-      assert_dom 'td', text: pending_reacceptance_membership.organization.name
-      assert_dom 'td', text: self_archived_membership.organization.name
-      assert_dom 'td', text: membership_invitation.organization.name
-      assert_dom 'td', text: archived_by_organization_membership.organization.name, count: 0
+      assert_index_markup(
+        active_membership: active_membership,
+        pending_reacceptance: pending_reacceptance_membership,
+        self_archived_membership: self_archived_membership,
+        membership_invitation: membership_invitation,
+        archived_by_organization_membership: archived_by_organization_membership,
+      )
     end
 
     test "update: can archive an active membership" do
