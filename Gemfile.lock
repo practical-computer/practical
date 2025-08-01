@@ -154,7 +154,7 @@ GEM
     erubi (1.13.1)
     faker (3.5.1)
       i18n (>= 1.8.11, < 2)
-    flipper (1.3.4)
+    flipper (1.3.6)
       concurrent-ruby (< 2)
     flipper-active_record (1.3.4)
       activerecord (>= 4.2, < 9)
