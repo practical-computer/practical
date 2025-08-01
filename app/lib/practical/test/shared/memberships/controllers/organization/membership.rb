@@ -25,11 +25,13 @@ module Practical::Test::Shared::Memberships::Controllers::Organization::Membersh
       end
 
       assert_response :ok
-      assert_dom 'td', text: active_membership_user.name
-      assert_dom 'td', text: pending_reacceptance_user.name
-      assert_dom 'td', text: archived_by_organization_user.name
-      assert_dom 'td', text: membership_invitation.email
-      assert_dom 'td', text: self_archived_user.name, count: 0
+      assert_index_markup(
+        active_membership_user: active_membership_user,
+        pending_reacceptance_user: pending_reacceptance_user,
+        archived_by_organization_user: archived_by_organization_user,
+        membership_invitation: membership_invitation,
+        self_archived_user: self_archived_user
+      )
     end
 
     test "create: creates a new invitation" do
