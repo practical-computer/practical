@@ -19,7 +19,7 @@ class Practical::Views::Form::InputComponent < Practical::Views::BaseComponent
   def field_options(**options)
     mix({
       "aria-describedby": field_errors_id,
-      data: {"pf-initial-load-errors": f.errors_for(object_method)&.any? }
+      "data": {"pf-initial-load-errors": f.errors_for(object_method)&.any? }
     }, options)
   end
 end
