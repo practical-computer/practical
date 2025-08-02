@@ -5,6 +5,14 @@ require "test_helper"
 class Organizations::MembershipsControllerTest < ActionDispatch::IntegrationTest
   include Practical::Test::Shared::Memberships::Controllers::Organization::Membership
 
+  def assert_index_markup(active_membership_user:, pending_reacceptance_user:, archived_by_organization_user:, membership_invitation:, self_archived_user:)
+    assert_dom 'td', text: active_membership_user.name
+    assert_dom 'td', text: pending_reacceptance_user.name
+    assert_dom 'td', text: archived_by_organization_user.name
+    assert_dom 'td', text: membership_invitation.email
+    assert_dom 'td', text: self_archived_user.name, count: 0
+  end
+
   def assert_create_policies_applied(organization:, &block)
     assert_authorized_to(:manage?, organization, with: OrganizationPolicy, &block)
   end
