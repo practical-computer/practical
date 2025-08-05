@@ -170,7 +170,7 @@ GEM
     google-protobuf (4.31.1-x86_64-linux-gnu)
       bigdecimal
       rake (>= 13)
-    honeybadger (6.0.2)
+    honeybadger (6.0.3)
       logger
       ostruct
     i18n (1.14.7)
