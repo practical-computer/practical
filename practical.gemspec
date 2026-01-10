@@ -27,7 +27,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "rails", ">= 8.0.2"
   spec.add_dependency "view_component"
   spec.add_dependency "loaf"
-  spec.add_dependency "pagy"
+  spec.add_dependency "pagy", ">= 43.0"
   spec.add_dependency "honeybadger"
   spec.add_dependency "semantic_logger"
   spec.add_dependency "devise-passkeys"

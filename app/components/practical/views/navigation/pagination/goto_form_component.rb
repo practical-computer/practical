@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class Practical::Views::Navigation::Pagination::GotoFormComponent < Practical::Views::BaseComponent
-  include Pagy::Frontend
   include Practical::Views::FormWrapper
   attr_accessor :pagy, :dialog_id, :page_detail_text
 
@@ -14,7 +13,7 @@ class Practical::Views::Navigation::Pagination::GotoFormComponent < Practical::V
   end
 
   def uri_parts
-    uri = URI.parse(pagy_url_for(pagy, nil))
+    uri = URI.parse(pagy.page_url)
     params = Rack::Utils.parse_query(uri.query)
     params.delete("page")
     uri.query = ""
