@@ -22,3 +22,4 @@ require "practical/helpers/text_helper"
 require "practical/helpers/translation_helper"
 require "practical/helpers/selector_helper"
 require "practical/helpers/honeybadger_helper"
+require 'practical/pagy'

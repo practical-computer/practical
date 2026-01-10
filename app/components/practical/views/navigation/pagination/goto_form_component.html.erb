@@ -1,11 +1,11 @@
 <%= render Practical::Views::OpenDialogButtonComponent.new(dialog_id: dialog_id, appearance: "filled outlined", size: :small) do %>
-  <%= pagy_t('pagy.nav.gap').html_safe %>
+  <%= Pagy::I18n.translate('pagy.nav.gap').html_safe %>
 <% end %>
 
 <%= render Practical::Views::ModalDialogComponent.new(id: dialog_id) do |component| %>
 
   <% component.with_header do %>
-    <%= pagy_t("pagy.nav.goto_page_form.legend") %>
+    <%= Pagy::I18n.translate("pagy.nav.goto_page_form.legend") %>
   <% end %>
   <section class="wa-stack">
     <p><%= page_detail_text %></p>
@@ -17,7 +17,7 @@
       <section class="wa-cluster">
         <%= f.number_field :page, value: pagy.page, placeholder: pagy.page.to_s, required: true, min: 1, max: pagy.last %>
         <%= f.button_component(type: :submit, color_variant: :neutral, appearance: :filled) do
-          pagy_t("pagy.nav.goto_page_form.button")
+          Pagy::I18n.translate("pagy.nav.goto_page_form.button")
         end %>
       </section>
     <% end %>

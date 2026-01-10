@@ -1,17 +1,20 @@
 # frozen_string_literal: true
 
 class Practical::Loaders::Base
-  include Pagy::Backend
+  include Pagy::Method
 
-  attr_accessor :params, :base_relation, :datatable_form, :relation_builder, :pagy_instance, :records
+  attr_accessor :request, :base_relation, :datatable_form,
+                :relation_builder, :pagy_instance, :records
 
-  def initialize(params:, base_relation:)
-    self.params = params
+  delegate :params, to: :request
+
+  def initialize(request:, base_relation:)
+    self.request = request
     self.base_relation = base_relation
   end
 
-  def self.load(params:, base_relation:)
-    instance = self.new(params: params, base_relation: base_relation)
+  def self.load(request:, base_relation:)
+    instance = self.new(request: request, base_relation: base_relation)
     instance.load
     return instance
   end
@@ -19,7 +22,7 @@ class Practical::Loaders::Base
   def load
     self.datatable_form = build_datatable_form
     self.relation_builder = build_relation_builder
-    self.pagy_instance, self.records = pagy(relation_builder.applied_relation, overflow: :last_page)
+    self.pagy_instance, self.records = pagy(relation_builder.applied_relation)
   end
 
   def datatable_payload
@@ -40,5 +43,10 @@ class Practical::Loaders::Base
 
   def default_payload
     raise NotImplementedError
+  end
+
+  def params
+    return request.params if request.params.kind_of?(ActionController::Parameters)
+    return ActionController::Parameters.new(request.params)
   end
 end
