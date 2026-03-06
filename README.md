@@ -8,11 +8,11 @@ TODO: Replace `practical` with your gem name right after releasing it to RubyGem
 
 Install the gem and add to the application's Gemfile by executing:
 
-    $ bundle add practical
+    $ bundle add practical --source "https://beta.gem.coop/@practical-computer"
 
 If bundler is not being used to manage dependencies, install the gem by executing:
 
-    $ gem install practical
+    $ gem "practical", source: "https://beta.gem.coop/@practical-computer"
 
 ## Usage
 
