@@ -119,7 +119,7 @@ GEM
     cbor (0.5.9.9)
     childprocess (5.1.0)
       logger (~> 1.5)
-    concurrent-ruby (1.3.5)
+    concurrent-ruby (1.3.7)
     connection_pool (2.5.4)
     content_disposition (1.0.0)
     cose (1.3.1)
